@@ -1,0 +1,16 @@
+{
+  "name": "chatbot",
+  "version": "1.0.0",
+  "description": "chatbot",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bhaktij Koli <bhaktijkoli121@gmail.com> (bhaktijkoli.com)",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "express-handlebars": "^3.0.0",
+    "morgan": "^1.9.1"
+  }
+}
