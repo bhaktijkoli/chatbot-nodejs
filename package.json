@@ -13,6 +13,7 @@
   "author": "Bhaktij Koli <bhaktijkoli121@gmail.com> (bhaktijkoli.com)",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
     "dotenv": "^6.2.0",
     "express-handlebars": "^3.0.0",
     "morgan": "^1.9.1"

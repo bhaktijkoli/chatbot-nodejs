@@ -1,0 +1,32 @@
+.input-group {
+  margin: 15px 0px 15px 0px;
+  input {
+    border: 1px solid #979797;
+    border-radius: 6px;
+    padding: 0 30px 0px 15px;
+    height: 50px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 300;
+    outline: none;
+  }
+  input:hover {
+    border: 1px solid #00a8ff;
+  }
+  input:hover .addon {
+    color: #00a8FF;
+  }
+  input:focus, input:active {
+    border: 1px solid #00a8ff;
+  }
+}
+.input-group .input-addon {
+  position: relative;
+  .addon {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    font-size: 2em;
+    color: #979797;
+  }
+}
