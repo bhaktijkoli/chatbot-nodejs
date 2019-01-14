@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 
 class Navbar extends Component {
   componentDidMount() {
-    if(document.getElementsByClassName('nav-transparent').length === 1) {
       window.addEventListener('scroll', function(e){
-        if(window.scrollY > 70) {
-          document.getElementById('navbar').className = "nav-raised";
-        } else {
-          document.getElementById('navbar').className = "nav-transparent";
+        if(window.allowTransparent == true) {
+          if(window.scrollY > 70) {
+            document.getElementById('navbar').className = "nav-raised";
+          } else {
+            document.getElementById('navbar').className = "nav-transparent";
+          }
         }
       });
-    }
   }
   render() {
     return (
@@ -22,10 +23,10 @@ class Navbar extends Component {
             </a>
           </div>
           <ul className="nav-items">
-            <li className="nav-item"><a href="">Home</a></li>
+            <li className="nav-item"><Link to="/">Home</Link></li>
             <li className="nav-item"><a href="/">Solutions</a></li>
             <li className="nav-item"><a href="/">Pricing</a></li>
-            <li className="nav-item"><a href="">Login</a></li>
+            <li className="nav-item"><Link to="/login">Login</Link></li>
           </ul>
         </div>
         <div className="nav-item-space"></div>

@@ -4,6 +4,7 @@ class Home extends Component {
   componentDidMount() {
     document.getElementById('navbar').classList.remove('nav-raised');
     document.getElementById('navbar').classList.add('nav-transparent');
+    window.allowTransparent = true;
   }
   render() {
     return (
