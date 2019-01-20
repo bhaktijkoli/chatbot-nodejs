@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-import { Link } from 'react-router-dom';
-
-class Login extends Component {
+class Signup extends Component {
   componentDidMount() {
     document.getElementById('navbar').classList.remove('nav-transparent');
     document.getElementById('navbar').classList.add('nav-raised');
@@ -23,40 +21,49 @@ class Login extends Component {
                     <p className="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                   </div>
                   <div className="card-body">
-                    <form id="login_form">
+                    <form id="signup_form" onSubmit={this.onSubmit.bind(this)}>
                       <div className="row">
-                        <div className="col-sm-12">
-                          <div className="error-block">
-                            The email address or password you entered is incorrect.
+                        <div className="col-sm-6">
+                          <div className="input-group">
+                            <label htmlFor="firstname">First Name</label>
+                            <div className="input-addon">
+                              <input type="text" id="firstname" name="firstname" placeholder="Enter your first name"/>
+                            </div>
+                            <p className="help-block"></p>
+                          </div>
+                        </div>
+                        <div className="col-sm-6">
+                          <div className="input-group">
+                            <label htmlFor="lastname">Last Name</label>
+                            <div className="input-addon">
+                              <input type="text" id="lastname" name="lastname" placeholder="Enter your last name"/>
+                            </div>
+                            <p className="help-block"></p>
                           </div>
                         </div>
                         <div className="col-sm-12">
                           <div className="input-group">
-                            <label for="email">Email</label>
+                            <label htmlFor="email">Email</label>
                             <div className="input-addon">
-                              <input type="email" id="email" name="email" placeholder="Enter your email address" />
+                              <input type="email" id="email" name="email" placeholder="Enter your email address"/>
                               <i className="addon typcn typcn-mail"></i>
                             </div>
+                            <p className="help-block"></p>
                           </div>
                         </div>
                         <div className="col-sm-12">
                           <div className="input-group">
-                            <label for="password">Password</label>
+                            <label htmlFor="password">Password</label>
                             <div className="input-addon">
-                              <input type="password" id="password" name="password" placeholder="Enter your email address" />
+                              <input type="password" id="password" name="password" placeholder="Enter your email address"/>
                               <i className="addon typcn typcn-key"></i>
                             </div>
-                            <a href="#" className="right">Forgot your password?</a>
+                            <p className="help-block"></p>
                           </div>
                         </div>
                         <div className="col-sm-12">
                           <div className="input-group-button">
-                            <button type="submit" className="btn primary ld-ext-right">Login<div className="ld ld-ring ld-spin"></div></button>
-                          </div>
-                        </div>
-                        <div className="col-sm-12">
-                          <div className="input-group-button">
-                            <p>Don't have an account? <Link to="/signup">Create account</Link></p>
+                            <button type="submit" className="btn primary ld-ext-right">Get Started<div className="ld ld-ring ld-spin"></div></button>
                           </div>
                         </div>
                       </div>
@@ -70,6 +77,9 @@ class Login extends Component {
         </main>
       );
     }
+    onSubmit(e) {
+      e.preventDefault();
+    }
   }
 
-  export default Login;
+  export default Signup;
