@@ -77,3 +77,6 @@ typings/
 
 # SASS Cache
 .sass-cache
+
+# Config
+config/config.json
