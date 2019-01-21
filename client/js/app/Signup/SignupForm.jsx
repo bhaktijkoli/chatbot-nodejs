@@ -75,7 +75,6 @@ class SignupForm extends Component {
         }).then(()=> {
           window.location.href="/"
         })
-
       } else {
         fh.set_multierrors(res.data);
       }

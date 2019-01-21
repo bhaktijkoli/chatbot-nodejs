@@ -17,7 +17,7 @@ class Signup extends Component {
           <div className="container">
             <div className="row">
               <div className="col-sm-6 offset-sm-6">
-                <div className="card raised rv">
+                <div className="card raised animated-fadeIn">
                   <div className="card-header">
                     <h2 className="card-title">Sign into your account</h2>
                     <p className="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>

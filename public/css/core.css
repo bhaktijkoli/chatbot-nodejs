@@ -2447,6 +2447,24 @@ html {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
+.animated-fadeIn {
+  visibility: hidden;
+  transform: translateY(-30px);
+  animation-name: animated-fadeIn;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes animated-fadeIn {
+  from {
+    visibility: hidden;
+    transform: translateY(-30px);
+  }
+  to {
+    visibility: visible;
+    transform: translateY(0px);
+  }
+}
 /* @FONT-FACE loads font into browser */
 @font-face {
   font-family: 'typicons';

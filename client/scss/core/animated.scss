@@ -1,0 +1,18 @@
+.animated-fadeIn {
+  visibility: hidden;
+  transform: translateY(-30px);
+  animation-name: animated-fadeIn;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes animated-fadeIn {
+  from {
+    visibility: hidden;
+    transform: translateY(-30px);
+  }
+  to {
+    visibility: visible;
+    transform: translateY(0px);
+  }
+}
