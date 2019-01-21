@@ -8,8 +8,7 @@ class SignupForm extends Component {
   }
   render() {
     return (
-
-      <form id="signup_form">
+      <form id="signup_form" onSubmit={this.onSubmit.bind(this)}>
         <div className="row">
           <div className="col-sm-6">
             <div className="input-group">
@@ -51,12 +50,37 @@ class SignupForm extends Component {
           </div>
           <div className="col-sm-12">
             <div className="input-group-button">
-              <button type="submit" className="btn primary ld-ext-right">Get Started<div className="ld ld-ring ld-spin"></div></button>
+              <button type="submit" className="btn primary">Get Started</button>
             </div>
           </div>
         </div>
       </form>
     );
+  }
+  onSubmit(e) {
+    e.preventDefault();
+    fh.hide_button();
+    let data = {
+      firstname: document.getElementById('firstname').value,
+      lastname: document.getElementById('lastname').value,
+      email: document.getElementById('email').value,
+      password: document.getElementById('password').value,
+    };
+    fh.remove_all_errros('signup_form');
+    axios.post(app('auth/register'), data).then(res => {
+      if(fh.is_success(res.data)) {
+        window.Swal.SingleDialog.fire({
+          type: 'info',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+        }).then(()=> {
+          window.location.href="/"
+        })
+
+      } else {
+        fh.set_multierrors(res.data);
+      }
+      fh.show_button();
+    })
   }
 }
 
