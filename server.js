@@ -1,4 +1,5 @@
 const express = require('express')
+const subdomain = require('express-subdomain');
 const path = require('path');
 const exphbs  = require('express-handlebars');
 const morgan = require('morgan');
@@ -28,7 +29,8 @@ app.locals.publicpath = path.join(__dirname, 'public');
 app.use(express.static(app.locals.publicpath));
 
 // Routes
-app.use('/app/auth', require('./routes/app/auth'));
+app.use('/api/auth', require('./routes/api/auth'));
+app.use(subdomain('app', require('./routes/app')));
 app.use('/', require('./routes/web'));
 
 app.listen(process.env.SERVER_PORT, () => console.log(`Server is listening on port ${process.env.SERVER_PORT}!`))
