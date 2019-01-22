@@ -1,10 +1,10 @@
 const router = require('express').Router();
 
-router.get('/', appTemplate);
+router.get('/login', authTemplate);
+router.get('/signup', authTemplate);
 
-function appTemplate(req, res) {
-  res.send("Hello")
-  // res.render('web', {title:'Welcome to Chatbot'});
+function authTemplate(req, res) {
+  res.render('auth', {title:'Welcome to Chatbot'});
 }
 
 module.exports = router;

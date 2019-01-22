@@ -21,7 +21,6 @@ router.post('/login', async (req, res) => {
   if(user) {
     if(bcrypt.compareSync(req.body.password, user.password)) {
       jwt.sign({id:user.id}, process.env.SECRET_KEY, (err, token)=> {
-          res.cookie('authtoken', token, { httpOnly: true });
           res.status(200).send("OK");
       });
       return;

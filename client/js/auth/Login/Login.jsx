@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 
-import SignupForm from './SignupForm'
+import { Link } from 'react-router-dom';
 
-class Signup extends Component {
-  componentDidMount() {
-    document.getElementById('navbar').classList.remove('nav-transparent');
-    document.getElementById('navbar').classList.add('nav-raised');
-    window.allowTransparent = false;
-  }
+import LoginForm from './LoginForm';
+
+class Login extends Component {
   render() {
     return (
       <main>
@@ -23,16 +20,16 @@ class Signup extends Component {
                     <p className="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                   </div>
                   <div className="card-body">
-                    <SignupForm />
+                    <LoginForm />
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        </main>
-      );
-    }
+      </main>
+    );
   }
+}
 
-  export default Signup;
+export default Login;

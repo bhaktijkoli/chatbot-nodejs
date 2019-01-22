@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
 
-import { Link } from 'react-router-dom';
+import SignupForm from './SignupForm'
 
-import LoginForm from './LoginForm';
-
-class Login extends Component {
-  componentDidMount() {
-    document.getElementById('navbar').classList.remove('nav-transparent');
-    document.getElementById('navbar').classList.add('nav-raised');
-    window.allowTransparent = false;
-  }
+class Signup extends Component {
   render() {
     return (
       <main>
@@ -25,16 +18,16 @@ class Login extends Component {
                     <p className="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                   </div>
                   <div className="card-body">
-                    <LoginForm />
+                    <SignupForm />
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-      </main>
-    );
+        </main>
+      );
+    }
   }
-}
 
-export default Login;
+  export default Signup;

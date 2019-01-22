@@ -1,5 +1,6 @@
 const express = require('express')
 const subdomain = require('express-subdomain');
+const cors = require('cors');
 const path = require('path');
 const exphbs  = require('express-handlebars');
 const morgan = require('morgan');
@@ -18,6 +19,7 @@ app.set('view engine', 'handlebars');
 
 // Logger
 app.use(morgan('dev'));
+app.use(cors());
 
 // Middleware
 app.use(cookieParser())
@@ -29,7 +31,7 @@ app.locals.publicpath = path.join(__dirname, 'public');
 app.use(express.static(app.locals.publicpath));
 
 // Routes
-app.use('/api/auth', require('./routes/api/auth'));
+app.use(subdomain('api', require('./routes/api')));
 app.use(subdomain('app', require('./routes/app')));
 app.use('/', require('./routes/web'));
 

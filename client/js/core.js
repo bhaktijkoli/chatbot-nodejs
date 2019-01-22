@@ -7,8 +7,3 @@ window.Swal.SingleDialog = Swal.mixin({
   confirmButtonClass: 'btn primary'
 });
 require('./core/formhandler');
-
-
-window.app = function(url) {
-  return '/app/'+url;
-}

@@ -47,9 +47,9 @@ class LoginForm extends Component {
       email: document.getElementById('email').value,
       password: document.getElementById('password').value,
     };
-    axios.post(app('auth/login'), data)
+    axios.post(api('auth/login'), data)
     .then(res => {
-      window.location.href="/"
+      window.location.href='/';
     })
     .catch(res => {
       if(res.response.status == 400) {

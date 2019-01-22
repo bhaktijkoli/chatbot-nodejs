@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 
 class SignupForm extends Component {
-  componentDidMount() {
-    document.getElementById('navbar').classList.remove('nav-transparent');
-    document.getElementById('navbar').classList.add('nav-raised');
-    window.allowTransparent = false;
-  }
   render() {
     return (
       <form id="signup_form" onSubmit={this.onSubmit.bind(this)}>
@@ -67,7 +62,7 @@ class SignupForm extends Component {
       password: document.getElementById('password').value,
     };
     fh.remove_all_errros('signup_form');
-    axios.post(app('auth/register'), data).then(res => {
+    axios.post(api('auth/register'), data).then(res => {
       if(fh.is_success(res.data)) {
         window.Swal.SingleDialog.fire({
           type: 'info',
