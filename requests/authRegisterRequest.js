@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const db = require('./../models');
 const rb = require('./../utils/response-builder');
 
@@ -23,11 +24,14 @@ module.exports =  async (req, res, next) => {
 
   if(rb.checkErrors(req, res)) return;
 
+  var salt = bcrypt.genSaltSync(10);
+  var password = bcrypt.hashSync(req.body.password, salt);
+
   req.data = {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,
-    password: req.body.password,
+    password: password,
   };
   next();
 }
