@@ -41,7 +41,10 @@
     "grunt-notify": "^0.4.5",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2",
     "webpack-notifier": "^1.7.0"

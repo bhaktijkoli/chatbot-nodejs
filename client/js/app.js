@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from "react-redux";
+import store from "./app/store";
 
 
 window.axios.defaults.headers.common['authtoken'] = cookie.get('authtoken');
@@ -12,4 +14,4 @@ window.api = function(url) {
 
 import App from './app/App';
 
-ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('root'));
+ReactDOM.render(<BrowserRouter><Provider store={store}><App/></Provider></BrowserRouter>, document.getElementById('root'));
