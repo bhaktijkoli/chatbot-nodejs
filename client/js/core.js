@@ -7,3 +7,4 @@ window.Swal.SingleDialog = Swal.mixin({
   confirmButtonClass: 'btn primary'
 });
 require('./core/formhandler');
+require('./core/cookiehandler');

@@ -414,7 +414,18 @@ eval("// shim for using process in browser\nvar process = module.exports = {};\n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("window.axios = __webpack_require__(/*! axios */ \"../../node_modules/axios/index.js\");\nwindow.Swal = __webpack_require__(/*! ./core/sweetalert2 */ \"./core/sweetalert2.js\");\nwindow.Swal.SingleDialog = Swal.mixin({\n  allowOutsideClick: false,\n  allowEscapeKey: false,\n  buttonsStyling: false,\n  confirmButtonClass: 'btn primary'\n});\n\n__webpack_require__(/*! ./core/formhandler */ \"./core/formhandler.js\");\n\n//# sourceURL=webpack:///./core.js?");
+eval("window.axios = __webpack_require__(/*! axios */ \"../../node_modules/axios/index.js\");\nwindow.Swal = __webpack_require__(/*! ./core/sweetalert2 */ \"./core/sweetalert2.js\");\nwindow.Swal.SingleDialog = Swal.mixin({\n  allowOutsideClick: false,\n  allowEscapeKey: false,\n  buttonsStyling: false,\n  confirmButtonClass: 'btn primary'\n});\n\n__webpack_require__(/*! ./core/formhandler */ \"./core/formhandler.js\");\n\n__webpack_require__(/*! ./core/cookiehandler */ \"./core/cookiehandler.js\");\n\n//# sourceURL=webpack:///./core.js?");
+
+/***/ }),
+
+/***/ "./core/cookiehandler.js":
+/*!*******************************!*\
+  !*** ./core/cookiehandler.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("var cookie = {\n  set: function set(cname, cvalue, exdays) {\n    var d = new Date();\n    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);\n    var expires = \"expires=\" + d.toUTCString();\n    document.cookie = cname + \"=\" + cvalue + \";\" + expires + \";path=/\";\n  },\n  get: function get(cname) {\n    var name = cname + \"=\";\n    var decodedCookie = decodeURIComponent(document.cookie);\n    var ca = decodedCookie.split(';');\n\n    for (var i = 0; i < ca.length; i++) {\n      var c = ca[i];\n\n      while (c.charAt(0) == ' ') {\n        c = c.substring(1);\n      }\n\n      if (c.indexOf(name) == 0) {\n        return c.substring(name.length, c.length);\n      }\n    }\n\n    return \"\";\n  }\n};\nwindow.cookie = cookie;\n\n//# sourceURL=webpack:///./core/cookiehandler.js?");
 
 /***/ }),
 

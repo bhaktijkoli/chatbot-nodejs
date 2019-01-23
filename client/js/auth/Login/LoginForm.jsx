@@ -49,7 +49,10 @@ class LoginForm extends Component {
     };
     axios.post(api('auth/login'), data)
     .then(res => {
-      window.location.href='/';
+      if(res.data.success) {
+        cookie.set('authtoken', res.data.token, 7);
+        window.location.href='/';
+      }
     })
     .catch(res => {
       if(res.response.status == 400) {
