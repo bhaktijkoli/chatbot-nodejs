@@ -1,14 +1,14 @@
 const router = require('express').Router();
-const guestMiddleware = require('./../middlewares/guestMiddleware');
-const authMiddleware = require('./../middlewares/authMiddleware');
+const guestWebMiddleware = require('./../middlewares/guestWebMiddleware');
+const authWebMiddleware = require('./../middlewares/authWebMiddleware');
 
 
-router.get('/', [authMiddleware], (req, res) => {
+router.get('/', [authWebMiddleware], (req, res) => {
   res.redirect('/website/add');
 });
-router.get('/login', [guestMiddleware], authTemplate);
-router.get('/signup', [guestMiddleware], authTemplate);
-router.get('/website/add', [authMiddleware], appTemplate);
+router.get('/login', [guestWebMiddleware], authTemplate);
+router.get('/signup', [guestWebMiddleware], authTemplate);
+router.get('/website/add', [authWebMiddleware], appTemplate);
 
 function authTemplate(req, res) {
   res.render('auth', {title:'Welcome to Chatbot'});

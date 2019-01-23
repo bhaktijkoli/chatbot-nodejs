@@ -7,7 +7,7 @@ module.exports = async (req, res, next) => {
       req.user = user;
       next();
     } else {
-      res.redirect('/login');
+      res.status(401).send("Unauthorized")
     }
   })
 }
