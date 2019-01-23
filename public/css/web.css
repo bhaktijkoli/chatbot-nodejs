@@ -25,12 +25,4 @@
   width: 600px;
 }
 
-.login-clip-path-1 {
-  position: absolute;
-  width: 100%;
-  min-height: 100vh;
-  background: #EFF0F2;
-  clip-path: polygon(61% 61%, 100% 75%, 100% 100%, 0% 100%);
-}
-
 /*# sourceMappingURL=web.css.map */

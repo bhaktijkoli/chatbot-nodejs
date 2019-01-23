@@ -9,6 +9,7 @@ module.exports = function(grunt) {
         files: {
           './public/css/core.css': './client/scss/core.scss',
           './public/css/web.css': './client/scss/web.scss',
+          './public/css/app.css': './client/scss/app.scss',
         }
       }
     },
