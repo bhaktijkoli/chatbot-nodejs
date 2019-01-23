@@ -1,7 +1,7 @@
 const tokenHandler = require('./../utils/token');
 
 module.exports = async (req, res, next) => {
-  let token = req.cookies.authtoken;
+  let token = req.headers.authtoken;
   tokenHandler.verifyAuthToken(token, (success, user) => {
     if(success) {
       req.user = user;

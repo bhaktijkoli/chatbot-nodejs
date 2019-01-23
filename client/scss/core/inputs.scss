@@ -1,6 +1,7 @@
 .input-group {
   margin: 15px 0px 15px 0px;
-  input {
+  input, select {
+    background: #FFFFFF;
     border: 1px solid #979797;
     border-radius: 6px;
     padding: 0 30px 0px 15px;
@@ -10,13 +11,13 @@
     font-weight: 300;
     outline: none;
   }
-  input:hover {
+  input:hover, select:hover {
     border: 1px solid #00a8ff;
   }
   input:hover .addon {
     color: #00a8FF;
   }
-  input:focus, input:active {
+  input:focus, input:active, select:focus, select:active {
     border: 1px solid #00a8ff;
   }
   .help-block {

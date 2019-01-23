@@ -5,8 +5,6 @@ const rb = require('./../utils/response-builder');
 module.exports =  async (req, res, next) => {
   req.check('name')
   .notEmpty().withMessage('Name is required.');
-  req.check('country')
-  .notEmpty().withMessage('Country is required.');
   req.check('industry')
   .notEmpty().withMessage('Industry is required.');
   req.check('size')
@@ -18,7 +16,6 @@ module.exports =  async (req, res, next) => {
 
   req.data = {
     name: req.body.name,
-    country: req.body.country,
     industry: req.body.industry,
     size: req.body.size,
     audience: req.body.audience,

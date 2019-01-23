@@ -2317,7 +2317,8 @@ html {
 .input-group {
   margin: 15px 0px 15px 0px;
 }
-.input-group input {
+.input-group input, .input-group select {
+  background: #FFFFFF;
   border: 1px solid #979797;
   border-radius: 6px;
   padding: 0 30px 0px 15px;
@@ -2327,13 +2328,13 @@ html {
   font-weight: 300;
   outline: none;
 }
-.input-group input:hover {
+.input-group input:hover, .input-group select:hover {
   border: 1px solid #00a8ff;
 }
 .input-group input:hover .addon {
   color: #00a8FF;
 }
-.input-group input:focus, .input-group input:active {
+.input-group input:focus, .input-group input:active, .input-group select:focus, .input-group select:active {
   border: 1px solid #00a8ff;
 }
 .input-group .help-block {

@@ -12,7 +12,6 @@ module.exports.verifyAuthToken = (token, callback) => {
         });
         if(user) {
           callback(true, user)
-          next();
           return;
         }
       }
