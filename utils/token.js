@@ -8,7 +8,8 @@ module.exports.verifyAuthToken = (token, callback) => {
         let user = await db.User.findOne({
           where: {
             id: decoded.id,
-          }
+          },
+          attributes: ['id', 'firstname', 'lastname', 'email']
         });
         if(user) {
           callback(true, user)

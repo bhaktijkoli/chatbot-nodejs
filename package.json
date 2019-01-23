@@ -13,6 +13,7 @@
   "author": "Bhaktij Koli <bhaktijkoli121@gmail.com> (bhaktijkoli.com)",
   "license": "MIT",
   "dependencies": {
+    "async": "^2.6.1",
     "axios": "^0.18.0",
     "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",

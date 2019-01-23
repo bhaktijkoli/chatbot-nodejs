@@ -11,6 +11,12 @@ class App extends Component {
       </div>
     );
   }
+  componentDidMount() {
+    axios.get(api('/auth/get'))
+    .then(res => {
+      console.log(res);
+    })
+  }
 }
 
 export default App;

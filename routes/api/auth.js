@@ -4,6 +4,10 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const db = require('./../../models');
 
+const each = require('async/each');
+
+const authMiddleware = require('./../../middlewares/authMiddleware');
+
 const authRegisterRequest = require('./../../requests/authRegisterRequest');
 const rb = require('./../../utils/response-builder');
 
@@ -32,5 +36,25 @@ router.post('/login', async (req, res) => {
   }
   res.status(400).send("Bad request");
 })
+
+router.get('/get', [authMiddleware], async (req, res) => {
+  var user = req.user.dataValues;
+  console.log(user);
+  let userCompanies = await db.UserCompany.findAll({
+    where: {user: user.id}
+  });
+  user.companies = [];
+  each(userCompanies,
+    async (uc) => {
+      let comp = await db.Company.findOne({
+        where: {id: uc.company}
+      });
+      user.companies.push(comp.dataValues);
+    },
+    (err) => {
+      res.status(200).json(user);
+    }
+  );
+});
 
 module.exports = router;
