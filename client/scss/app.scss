@@ -2,4 +2,7 @@ body {
   background-color: #EFF3F6;
 }
 
+@import 'core/variables';
+
 @import "app/login";
+@import "app/sidebar";

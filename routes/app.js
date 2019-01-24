@@ -3,11 +3,10 @@ const guestMiddleware = require('./../middlewares/guestMiddleware');
 const authMiddleware = require('./../middlewares/authMiddleware');
 
 
-router.get('/', [authMiddleware], (req, res) => {
-  res.redirect('/company/add');
-});
 router.get('/login', [guestMiddleware], authTemplate);
 router.get('/signup', [guestMiddleware], authTemplate);
+
+router.get('/', [authMiddleware], appTemplate);
 router.get('/company/add', [authMiddleware], appTemplate);
 
 function authTemplate(req, res) {

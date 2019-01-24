@@ -10,4 +10,63 @@ body {
   clip-path: polygon(61% 61%, 100% 75%, 100% 100%, 0% 100%);
 }
 
+#sidebar {
+  background: #1C242F;
+  width: 80px;
+  min-height: 100vh;
+  position: fixed;
+  padding: 10px;
+  text-align: center;
+}
+#sidebar .sidebar-logo img {
+  width: 54px;
+}
+#sidebar .user-avatar-container {
+  position: relative;
+  margin-top: 20px;
+}
+#sidebar .user-avatar-container img {
+  position: relative;
+  width: 42px;
+  border-radius: 5px;
+}
+#sidebar .status {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: green;
+  bottom: 4px;
+  right: 6px;
+  border: #1C242F 1px solid;
+}
+#sidebar .sidebar-menu {
+  margin-top: 20px;
+  padding: 0px;
+  position: relative;
+  list-style-type: none;
+}
+#sidebar .sidebar-menu .menu-item {
+  position: relative;
+  margin: 10px 0px;
+  border-radius: 5px;
+}
+#sidebar .sidebar-menu .menu-item span {
+  text-align: center;
+  font-size: 32px;
+  color: #FFFFFF;
+}
+#sidebar .menu-item:hover {
+  background: #00000036;
+}
+#sidebar .menu-item.active {
+  background: #00a8ff;
+}
+
+main {
+  width: calc(100% - 80px);
+  position: relative;
+  float: right;
+}
+
 /*# sourceMappingURL=app.css.map */
