@@ -29,6 +29,10 @@ p {
   font-size: 1em;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 html {
   box-sizing: border-box;
   -ms-overflow-style: scrollbar;
@@ -2618,6 +2622,23 @@ html {
   to {
     visibility: visible;
     transform: translateY(0px);
+  }
+}
+.fadeInLeft {
+  opacity: 0;
+  animation-name: fadeInLeft;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 /* @FONT-FACE loads font into browser */

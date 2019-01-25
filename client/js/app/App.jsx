@@ -17,7 +17,7 @@ class App extends Component {
           <Sidebar auth={this.props.auth}/>
           <Switch>
             <Route exact path="/" component={Home}/>
-            <Route exact path="/settings" component={Settings}/>
+            <Route path="/settings" component={Settings}/>
           </Switch>
         </PageLoading>
       </div>

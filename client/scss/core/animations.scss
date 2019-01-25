@@ -1,0 +1,16 @@
+.fadeInLeft {
+  opacity: 0;
+  animation-name: fadeInLeft;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeInLeft {
+   0% {
+      opacity: 0;
+      transform: translateX(-20px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateX(0);
+   }
+}

@@ -48,7 +48,7 @@
     color: #FFFFFF;
   }
   .sidebar-menu .menu-item:hover {
-    background: #00000036;
+    background: $sidebar-menu-hover;
   }
   .sidebar-menu .menu-item.active {
     background: $color-primary;
