@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 
 import AddCompanyForm from './AddCompanyForm'
@@ -6,6 +7,7 @@ import AddCompanyForm from './AddCompanyForm'
 class AddCompany extends Component {
   componentDidMount() {
     document.title = "Add your company"
+    this.props.dispatch({type: "AUTH_MENU", payload: "settings"})
   }
   render() {
     return (
@@ -28,4 +30,10 @@ class AddCompany extends Component {
   }
 }
 
-export default AddCompany;
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
+
+export default connect(mapStateToProps)(AddCompany);

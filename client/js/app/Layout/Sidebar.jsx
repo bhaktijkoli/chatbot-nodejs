@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import EmptyLoading from './EmptyLoading'
 
 class Sidebar extends Component {
+  constructor(props) {
+    super(props);
+    this.getMenuClass = this.getMenuClass.bind(this);
+  }
   render() {
     return (
       <EmptyLoading condition={this.props.auth.user}>
@@ -19,16 +23,19 @@ class Sidebar extends Component {
           </div>
           <ul className="sidebar-menu">
             <li className={this.getMenuClass('inbox')}>
-              <Link to="/"><span className="typcn typcn-messages"></span></Link>
+              <Link to="/" className="tooltip right"><span className="typcn typcn-messages"></span><p className="tooltip-text">Inbox</p></Link>
             </li>
             <li className={this.getMenuClass('visitors')}>
-              <Link to="/"><span className="typcn typcn-world"></span></Link>
+              <Link to="/visitors" className="tooltip right"><span className="typcn typcn-world"></span><p className="tooltip-text">Visitors</p></Link>
             </li>
             <li className={this.getMenuClass('contacts')}>
-              <Link to="/"><span className="typcn typcn-contacts"></span></Link>
+              <Link to="/contacts" className="tooltip right"><span className="typcn typcn-contacts"></span><p className="tooltip-text">Contacts</p></Link>
             </li>
             <li className={this.getMenuClass('analytics')}>
-              <Link to="/"><span className="typcn typcn-chart-bar"></span></Link>
+              <Link to="/analytics" className="tooltip right"><span className="typcn typcn-chart-bar"></span><p className="tooltip-text">Analytics</p></Link>
+            </li>
+            <li className={this.getMenuClass('settings')}>
+              <Link to="/settings" className="tooltip right"><span className="typcn typcn-cog"></span><p className="tooltip-text">Settings</p></Link>
             </li>
           </ul>
         </div>
@@ -36,7 +43,7 @@ class Sidebar extends Component {
     );
   }
   getMenuClass(menu) {
-    if(menu == window.menu) {
+    if(menu == this.props.auth.menu) {
       return 'menu-item active';
     } else {
       return 'menu-item';
