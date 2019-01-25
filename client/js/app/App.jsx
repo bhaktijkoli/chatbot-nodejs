@@ -25,6 +25,7 @@ class App extends Component {
     .then(res => {
       this.props.dispatch({type: "AUTH_USER", payload: res.data})
     })
+    .catch(err=> {fh.show_errorpage(err)});
   }
 }
 

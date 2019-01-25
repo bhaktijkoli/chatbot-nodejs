@@ -99,6 +99,7 @@ class AddCompanyForm extends Component {
         fh.set_multierrors(res.data);
       }
     })
+    .catch(err=> {fh.show_errorpage(err)})
     .finally(() => {
       fh.show_button();
     })
