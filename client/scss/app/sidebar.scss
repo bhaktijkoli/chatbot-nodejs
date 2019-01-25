@@ -1,6 +1,6 @@
 #sidebar {
   background: $sidebar-color;
-  width: 80px;
+  width: $sidebar-width;
   min-height: 100vh;
   position: fixed;
   padding: 10px;
@@ -52,8 +52,27 @@
     background: $color-primary;
   }
 }
+
+@media only screen and (min-width: 768px) {
+  #sidebar {
+    width: 0px;
+    animation: sidebarAnimate;
+    animation-duration: 300ms;
+    animation-fill-mode: both;
+  }
+}
+
+@keyframes sidebarAnimate {
+  from {
+    width: 0px;
+  }
+  to {
+    width: $sidebar-width;
+  }
+}
+
 main {
-  width: calc(100% - 80px);
+  width: calc(100% - $sidebar-width);
   position: relative;
   float: right;
 }

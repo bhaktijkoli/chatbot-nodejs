@@ -5,15 +5,18 @@ import { connect } from "react-redux";
 import Home from './Home/Home.jsx';
 import AddCompany from './AddCompany/AddCompany.jsx';
 
+import PageLoading from './Layout/PageLoading.jsx'
 import Sidebar from './Layout/Sidebar.jsx'
 
 class App extends Component {
   render() {
     return (
       <div id="wrapper">
-        <Sidebar/>
-        <Route exact path="/" component={Home}/>
-        <Route exact path="/company/add" component={AddCompany}/>
+        <PageLoading condition={this.props.auth.user}>
+          <Sidebar auth={this.props.auth}/>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/company/add" component={AddCompany}/>
+        </PageLoading>
       </div>
     );
   }
