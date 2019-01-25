@@ -51,16 +51,17 @@ body {
   position: relative;
   margin: 10px 0px;
   border-radius: 5px;
+  transition: 300ms;
 }
 #sidebar .sidebar-menu .menu-item span {
   text-align: center;
   font-size: 32px;
   color: #FFFFFF;
 }
-#sidebar .menu-item:hover {
+#sidebar .sidebar-menu .menu-item:hover {
   background: #00000036;
 }
-#sidebar .menu-item.active {
+#sidebar .sidebar-menu .menu-item.active {
   background: #00a8ff;
 }
 
@@ -81,9 +82,14 @@ body {
   }
 }
 main {
-  width: calc(100% - $sidebar-width);
-  position: relative;
+  width: calc(100% - 80px);
   float: right;
+  left: 0;
+  position: relative;
+}
+
+main .main-content {
+  float: left;
 }
 
 .spinner {

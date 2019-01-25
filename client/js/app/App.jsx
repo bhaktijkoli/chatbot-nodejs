@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 
 import Home from './Home/Home.jsx';
+import Settings from './Settings/Settings.jsx';
 import AddCompany from './AddCompany/AddCompany.jsx';
 
 import PageLoading from './Layout/PageLoading.jsx'
@@ -14,8 +15,10 @@ class App extends Component {
       <div id="wrapper">
         <PageLoading condition={this.props.auth.user}>
           <Sidebar auth={this.props.auth}/>
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/company/add" component={AddCompany}/>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/settings" component={Settings}/>
+          </Switch>
         </PageLoading>
       </div>
     );
@@ -35,4 +38,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));

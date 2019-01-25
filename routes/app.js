@@ -7,6 +7,11 @@ router.get('/login', [guestMiddleware], authTemplate);
 router.get('/signup', [guestMiddleware], authTemplate);
 
 router.get('/', [authMiddleware], appTemplate);
+router.get('/inbox', [authMiddleware], appTemplate);
+router.get('/visitors', [authMiddleware], appTemplate);
+router.get('/contacts', [authMiddleware], appTemplate);
+router.get('/analytics', [authMiddleware], appTemplate);
+router.get('/settings', [authMiddleware], appTemplate);
 router.get('/company/add', [authMiddleware], appTemplate);
 
 function authTemplate(req, res) {
