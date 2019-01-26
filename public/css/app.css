@@ -91,7 +91,7 @@ body {
   width: 80px;
   min-height: 100vh;
   position: fixed;
-  padding: 10px;
+  padding: 10px 0px;
   text-align: center;
   z-index: 1040;
 }
@@ -126,7 +126,6 @@ body {
 #sidebar .sidebar-menu .menu-item {
   position: relative;
   margin: 10px 0px;
-  border-radius: 5px;
   transition: 300ms;
 }
 #sidebar .sidebar-menu .menu-item span {
@@ -138,7 +137,8 @@ body {
   background: #00000036;
 }
 #sidebar .sidebar-menu .menu-item.active {
-  background: #00a8ff;
+  border-left: 5px solid #00a8ff;
+  background: #00000036;
 }
 
 @media only screen and (min-width: 768px) {

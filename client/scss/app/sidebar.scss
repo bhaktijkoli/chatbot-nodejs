@@ -3,7 +3,7 @@
   width: $sidebar-width;
   min-height: 100vh;
   position: fixed;
-  padding: 10px;
+  padding: 10px 0px;
   text-align: center;
   z-index: 1040;
   .sidebar-logo {
@@ -39,7 +39,6 @@
   .sidebar-menu .menu-item {
     position: relative;
     margin: 10px 0px;
-    border-radius: 5px;
     transition: 300ms;
   }
   .sidebar-menu .menu-item span {
@@ -51,7 +50,8 @@
     background: $sidebar-menu-hover;
   }
   .sidebar-menu .menu-item.active {
-    background: $color-primary;
+    border-left: 5px solid $color-primary;
+    background: $sidebar-menu-hover;
   }
 }
 
