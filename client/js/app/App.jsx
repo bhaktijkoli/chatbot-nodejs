@@ -28,6 +28,7 @@ class App extends Component {
     axios.get(api('/auth/get'))
     .then(res => {
       this.props.dispatch({type: "AUTH_USER", payload: res.data})
+      this.props.dispatch({type: "AUTH_WEBSITES", payload: res.data.websites})
     })
     .catch(err=> {fh.show_errorpage(err)});
   }

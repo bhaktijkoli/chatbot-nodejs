@@ -3,6 +3,8 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const db = require('./../../models');
+const Op = db.Sequelize.Op;
+
 
 const each = require('async/each');
 
@@ -39,7 +41,23 @@ router.post('/login', async (req, res) => {
 
 router.get('/get', [authMiddleware], async (req, res) => {
   var user = req.user.dataValues;
-  res.status(200).json(user);
+  var userWebsites = await db.UserWebsite.findAll({
+    where: {user: user.id}
+  });
+  user.websites = [];
+  each(userWebsites,
+    async (uw) => {
+      var website = await db.Website.findOne({
+        where: {id: uw.website, active: {[Op.gte]: 0}}
+      });
+      if(website) {
+        user.websites.push(website.dataValues);
+      }
+    },
+    (err) => {
+      res.status(200).json(user);
+    }
+  )
 });
 
 module.exports = router;
