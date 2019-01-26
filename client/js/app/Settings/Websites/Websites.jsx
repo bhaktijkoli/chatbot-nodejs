@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class Account extends Component {
   componentDidMount() {
@@ -9,9 +9,18 @@ class Account extends Component {
   }
   render() {
     return (
-      <div>
-        <h1>Websites</h1>
+      <div className="container">
+        <div className="space50"/>
+        <div className="card raised animated fadeInDown">
+          <div className="card-header">
+            <h2 className="card-title">Website Settings</h2>
+            <p className="card-subtitle">Manage your websites.</p>
+            <div className="space20"/>
+            <Link to="/websites/add" className="btn-text">Add website</Link>
+          </div>
+        </div>
       </div>
+
     );
   }
 }

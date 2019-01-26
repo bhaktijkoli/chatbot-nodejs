@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     audience: {type: DataTypes.ENUM, values: ['0', '1', '2']},
     plan: {type: DataTypes.ENUM, values: ['0', '1', '2'], defaultValue: '0'},
     owner: {type: DataTypes.INTEGER},
-    active: {type: DataTypes.INTEGER, defaultValue: '0'},
+    active: {type: DataTypes.INTEGER, defaultValue: '-1'},
   });
 
   return Website;

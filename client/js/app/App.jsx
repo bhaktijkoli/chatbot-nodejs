@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import Home from './Home/Home.jsx';
 import Settings from './Settings/Settings.jsx';
-import AddCompany from './AddCompany/AddCompany.jsx';
+import AddWebsite from './AddWebsite/AddWebsite.jsx';
 
 import PageLoading from './Layout/PageLoading.jsx'
 import Sidebar from './Layout/Sidebar.jsx'
@@ -18,6 +18,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route path="/settings" component={Settings}/>
+            <Route path="/websites/add" component={AddWebsite}/>
           </Switch>
         </PageLoading>
       </div>

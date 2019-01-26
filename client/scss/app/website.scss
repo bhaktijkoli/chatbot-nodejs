@@ -1,0 +1,50 @@
+#choose-plan {
+  .plan {
+    width: 100%;
+    min-height: 100px;
+    transition: 300ms;
+    box-shadow: $shadow-1;
+  }
+  .plan:hover {
+    box-shadow: $shadow-2;
+  }
+  .plan.blue {
+    border: 1px solid $color-blue;
+  }
+  .plan.blue .plan-heading {
+    background-color: $color-blue;
+  }
+  .plan-heading {
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #FFFFFF;
+  }
+  .plan-body {
+    padding: 10px;
+  }
+  .plan-button {
+    width: 100%;
+    position:relative;
+    border:none;
+    display:inline-block;
+    margin-bottom:0;
+    font-weight:normal;
+    text-align:center;
+    text-decoration: none;
+    vertical-align:middle;
+    touch-action:manipulation;
+    outline: none;
+    cursor:pointer;
+    background-image:none;
+    white-space:nowrap;
+    padding:6px 10px;
+    font-size:1em;
+    line-height:1.846;
+    border-radius:3px;
+    -ms-user-select:none;
+    user-select:none;
+    -o-transition:all 0.4s;
+    transition:all 0.4s;
+  }
+}

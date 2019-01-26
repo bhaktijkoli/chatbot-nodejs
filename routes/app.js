@@ -13,6 +13,7 @@ router.get('/contacts', [authMiddleware], appTemplate);
 router.get('/analytics', [authMiddleware], appTemplate);
 router.get('/settings', [authMiddleware], appTemplate);
 router.get('/settings/*', [authMiddleware], appTemplate);
+router.get('/websites/*', [authMiddleware], appTemplate);
 router.get('/company/add', [authMiddleware], appTemplate);
 
 function authTemplate(req, res) {

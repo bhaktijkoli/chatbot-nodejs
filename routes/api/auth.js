@@ -39,22 +39,7 @@ router.post('/login', async (req, res) => {
 
 router.get('/get', [authMiddleware], async (req, res) => {
   var user = req.user.dataValues;
-  console.log(user);
-  let userCompanies = await db.UserCompany.findAll({
-    where: {user: user.id}
-  });
-  user.companies = [];
-  each(userCompanies,
-    async (uc) => {
-      let comp = await db.Company.findOne({
-        where: {id: uc.company}
-      });
-      user.companies.push(comp.dataValues);
-    },
-    (err) => {
-      res.status(200).json(user);
-    }
-  );
+  res.status(200).json(user);
 });
 
 module.exports = router;

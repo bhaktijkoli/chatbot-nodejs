@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class AddCompanyForm extends Component {
+class UpdateWebsiteCompanyForm extends Component {
   render() {
     return (
-      <form id="add_company_form" onSubmit={this.onSubmit.bind(this)}>
+      <form id="formUpdateWebsiteCompany" onSubmit={this.onSubmit.bind(this)}>
         <div className="row">
           <div className="col-sm-12">
             <div className="input-group">
               <label htmlFor="name">Company Name</label>
-              <input type="name" id="name" name="text" placeholder="Enter your company name here" />
+              <input type="name" id="company" name="text" placeholder="Enter your company name here" />
               <p className="help-block"></p>
             </div>
           </div>
@@ -74,7 +74,7 @@ class AddCompanyForm extends Component {
           </div>
           <div className="col-sm-12">
             <div className="input-group-button">
-              <button type="submit" className="btn primary">Add Company</button>
+              <button type="submit" className="btn primary">Next</button>
             </div>
           </div>
         </div>
@@ -84,17 +84,18 @@ class AddCompanyForm extends Component {
   onSubmit(e) {
     e.preventDefault();
     fh.hide_button();
-    fh.remove_all_errros('add_company_form');
+    fh.remove_all_errros('formUpdateWebsiteCompany');
     let data = {
-      name:  document.getElementById('name').value,
+      website: this.props.website.id,
+      company:  document.getElementById('company').value,
       industry:  document.getElementById('industry').value,
       size:  document.getElementById('size').value,
       audience:  document.getElementById('audience').value,
     }
-    axios.post(api('company/add'), data)
+    axios.post(api('website/update/company'), data)
     .then(res => {
       if(fh.is_success(res.data)) {
-
+        this.props.callback(this.props.website);
       } else {
         fh.set_multierrors(res.data);
       }
@@ -106,4 +107,4 @@ class AddCompanyForm extends Component {
   }
 }
 
-export default AddCompanyForm;
+export default UpdateWebsiteCompanyForm;

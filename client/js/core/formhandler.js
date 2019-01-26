@@ -75,6 +75,7 @@ window.fh = {
   },
 
   show_errorpage: function(error) {
+    console.log(error);
     alert(error.response.status);
   }
 }
