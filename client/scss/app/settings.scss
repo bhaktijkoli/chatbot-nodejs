@@ -28,32 +28,32 @@
     vertical-align: top;
   }
   .settings-item.red .settings-icon {
-    background-color: #e74c3c;
+    background-color: $color-red;
   }
   .settings-item.red.active {
     background-color: $menu-hover;
-    border-left: 5px solid #e74c3c;
+    border-left: 5px solid $color-red;
   }
   .settings-item.green .settings-icon {
-    background-color: #2ecc71;
+    background-color: $color-green;
   }
   .settings-item.green.active {
     background-color: $menu-hover;
-    border-left: 5px solid #2ecc71;
+    border-left: 5px solid $color-green;
   }
   .settings-item.yellow .settings-icon {
-    background-color: #f1c40f;
+    background-color: $color-yellow;
   }
   .settings-item.yellow.active {
     background-color: $menu-hover;
-    border-left: 5px solid #f1c40f;
+    border-left: 5px solid $color-yellow;
   }
   .settings-item.blue .settings-icon {
-    background-color: #3498db;
+    background-color: $color-blue;
   }
   .settings-item.blue.active {
     background-color: $menu-hover;
-    border-left: 5px solid #3498db;
+    border-left: 5px solid $color-blue;
   }
   .settings-text {
     color: #212529;

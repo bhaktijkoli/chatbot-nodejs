@@ -2329,6 +2329,7 @@ html {
 .btn-text {
   color: #00a8ff;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .input-group {
