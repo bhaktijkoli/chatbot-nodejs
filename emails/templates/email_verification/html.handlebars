@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Verification</title>
+</head>
+<body>
+  <div class="content">
+    <span>Hello {{user.firstname}},</span><br/>
+    <h3>Welcome to Chat.ai</h3>
+    <br/>
+    <p>An email has been sent for verification!</p>
+    <a class="btn" href="http://app.{{default.host}}/verification?token={{ev.token}}">Login to your account</a>
+  </div>
+</body>
+</html>
