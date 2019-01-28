@@ -20,3 +20,12 @@
   ```
   npm start
   ```
+
+## Virtual Hosts Setup
+1. Open /etc/hosts file with admin privileges
+2. Add this lines at the end of the file
+```
+  127.0.0.1         chat.ai
+  127.0.0.1         app.chat.ai
+  127.0.0.1         apichat.ai
+```
