@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     lastname: {type: DataTypes.STRING},
     email: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING},
+    verified: {type: DataTypes.ENUM, values: ['0', '1'], defaultValue: '0'}
   });
 
   return User;

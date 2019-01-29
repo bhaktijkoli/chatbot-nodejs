@@ -16,19 +16,24 @@ router.get('/settings', [authMiddleware], appTemplate);
 router.get('/settings/*', [authMiddleware], appTemplate);
 router.get('/websites/*', [authMiddleware], appTemplate);
 router.get('/company/add', [authMiddleware], appTemplate);
-router.get('/verification', (req, res)=>{
-  let ev = db.EmailVerification.findOne({
+router.get('/verification', async (req, res)=>{
+  let ev = await db.EmailVerification.findOne({
     where: {
       token: req.query.token,
     }
   });
   if(ev){
+    let user = await db.User.update(
+      {verified: '1'}, 
+      {where: {id: ev.user}}
+    );
     res.send('Verification Successful!');
   }
   else{
-    res.send('Verification failed!');
+    res.send('Verification Failed!');
   }
-})
+});
+
 function authTemplate(req, res) {
   res.render('auth', {title:'Welcome to Chatbot'});
 }
