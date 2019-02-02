@@ -10,6 +10,7 @@ module.exports = function(grunt) {
           './public/css/core.css': './client/scss/core.scss',
           './public/css/web.css': './client/scss/web.scss',
           './public/css/app.css': './client/scss/app.scss',
+          './public/css/chat.css': './client/scss/chat.scss',
         }
       }
     },

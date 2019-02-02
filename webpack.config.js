@@ -7,6 +7,7 @@ module.exports = {
     core: './core.js',
     auth: './auth.js',
     web: './web.js',
+    chat: './chat.js',
   },
   output: {
     path: path.join(__dirname, "public/js"),

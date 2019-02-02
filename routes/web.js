@@ -9,6 +9,9 @@ router.get('/login', (req, res) => {
 router.get('/signup', (req, res) => {
   res.redirect(req.protocol+"://app." + req.get('host') + "/signup")
 });
+router.get('/chat', (req, res) => {
+  res.render('chat', {title:'Welcome to Chatbot'});
+});
 
 function webTemplate(req, res) {
   res.render('web', {title:'Welcome to Chatbot'});

@@ -1,0 +1,12 @@
+#chat-window.large {
+  width: 380px;
+  #chat-message-container {
+    height: 480px;
+  }
+  #chat-window-input-container {
+    width: 380px;
+  }
+  #chat-window-input {
+    width: (380px - 20px)
+  }
+}
