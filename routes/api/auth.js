@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const db = require('./../../models');
+const Op = db.Sequelize.Op
 const Email = require('./../../emails/email');
 const randToken = require('rand-token');
 
@@ -47,7 +48,25 @@ router.post('/login', async (req, res) => {
 
 router.get('/get', [authMiddleware], async (req, res) => {
   var user = req.user.dataValues;
-  res.status(200).json(user);
+  var userWebsites = await db.UserWebsite.find({
+    where: { user: user.id }
+  });
+  user.websites = [];
+  console.log("HEllo");
+  each(userWebsites,
+    async (userWebsite, callback) => {
+      var website = await db.Website.findOne({
+        where: {id: userWebsite.id},
+        attributes: ['name', 'domain']
+      });
+      console.log(website.dataValues);
+      user.websites.push(website);
+      callback();
+    },
+    () => {
+      res.status(200).json(user);
+    }
+  );
 });
 
 module.exports = router;
