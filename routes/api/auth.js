@@ -52,14 +52,12 @@ router.get('/get', [authMiddleware], async (req, res) => {
     where: { user: user.id }
   });
   user.websites = [];
-  console.log("HEllo");
   each(userWebsites,
     async (userWebsite, callback) => {
       var website = await db.Website.findOne({
         where: {id: userWebsite.id},
         attributes: ['name', 'domain']
       });
-      console.log(website.dataValues);
       user.websites.push(website);
       callback();
     },

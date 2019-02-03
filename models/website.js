@@ -9,8 +9,15 @@ module.exports = (sequelize, DataTypes) => {
     plan: {type: DataTypes.ENUM, values: ['0', '1', '2'], defaultValue: '0'},
     owner: {type: DataTypes.INTEGER},
     active: {type: DataTypes.INTEGER, defaultValue: '-1'},
+  }, {
+    hooks: {
+      afterCreate: async (website, options) => {
+        var chatbox = await website.sequelize.models.Chatbox.create({
+          website: website.id,
+        })
+      }
+    }
   });
-
   return Website;
 };
 
