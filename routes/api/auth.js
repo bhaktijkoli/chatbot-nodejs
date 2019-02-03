@@ -55,7 +55,7 @@ router.get('/get', [authMiddleware], async (req, res) => {
   each(userWebsites,
     async (userWebsite) => {
       var website = await db.Website.findOne({
-        where: {id: userWebsite.website},
+        where: {id: userWebsite.website, active: {[Op.gte]: 0}},
         attributes: ['name', 'domain', 'active']
       });
       console.log("Website: ", website);

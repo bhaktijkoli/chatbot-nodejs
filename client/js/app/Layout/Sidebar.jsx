@@ -10,7 +10,7 @@ class Sidebar extends Component {
   }
   render() {
     return (
-      <EmptyLoading condition={this.props.auth.user}>
+      <EmptyLoading condition={this.props.auth.user && this.props.auth.websites.length != 0}>
         <div id="sidebar">
           <div className="sidebar-logo">
             <a href="/">

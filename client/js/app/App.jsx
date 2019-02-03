@@ -27,6 +27,9 @@ class App extends Component {
   componentDidMount() {
     axios.get(api('/auth/get'))
     .then(res => {
+      if(res.data.websites.length == 0) {
+        this.props.history.push('/websites/add');
+      }
       this.props.dispatch({type: "AUTH_USER", payload: res.data})
       this.props.dispatch({type: "AUTH_WEBSITES", payload: res.data.websites})
     })

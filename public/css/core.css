@@ -41,6 +41,14 @@ p {
   margin: 50px 0px;
 }
 
+.success {
+  color: #2ecc71;
+}
+
+.danger {
+  color: #e74c3c;
+}
+
 html {
   box-sizing: border-box;
   -ms-overflow-style: scrollbar;
@@ -2376,10 +2384,10 @@ html {
 }
 
 .input-group.has-error input {
-  border: 1px solid #F44336;
+  border: 1px solid #e74c3c;
 }
 .input-group.has-error .help-block {
-  color: #F44336;
+  color: #e74c3c;
 }
 
 .input-group .input-addon {

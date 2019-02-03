@@ -13,7 +13,7 @@ class Account extends Component {
         <tr key={key}>
           <td>{el.name}</td>
           <td>{el.domain}</td>
-          <td>{this.getStatusText(el.active)}</td>
+          <td className={el.active?'success':'danger'}>{this.getStatusText(el.active)}</td>
           <td><Link to="/" className="btn-text">Settings</Link></td>
         </tr>
       )
@@ -40,7 +40,7 @@ class Account extends Component {
               </tbody>
             </table>
             <div className="space20"/>
-            <Link to="/websites/add" className="btn-text">Add website</Link>
+            <Link to="/websites/add" className="btn-text" style={{marginLeft:10}}>Add website</Link>
           </div>
         </div>
       </div>
