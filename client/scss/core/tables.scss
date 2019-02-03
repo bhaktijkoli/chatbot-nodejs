@@ -1,28 +1,32 @@
 table {
   width: 100%;
   border-collapse: collapse;
+  border: none;
 }
 
 tr:nth-of-type(odd) {
+  background: #f5f5f5;
+}
+tr:hover {
   background: #eee;
 }
-
 th {
   background: $color-primary;
   color: white;
   font-weight: bold;
 }
+
 td, th {
   padding: 6px;
-  border: 1px solid #ccc;
   text-align: left;
+  border: none;
 }
 
 @media
 only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
 
 	table, thead, tbody, th, td, tr {
-		display: block;
+  		display: block;
 	}
 
 	/* Hide table headers (but not display: none;, for accessibility) */

@@ -8,7 +8,6 @@ class Account extends Component {
     this.props.dispatch({type: "AUTH_MENU", payload: "settings"})
   }
   render() {
-    console.log(this.props.auth);
     let websitesList = this.props.auth.websites.map((el, key)=>{
       return (
         <tr key={key}>

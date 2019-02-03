@@ -48,18 +48,18 @@ router.post('/login', async (req, res) => {
 
 router.get('/get', [authMiddleware], async (req, res) => {
   var user = req.user.dataValues;
-  var userWebsites = await db.UserWebsite.find({
+  var userWebsites = await db.UserWebsite.findAll({
     where: { user: user.id }
   });
   user.websites = [];
   each(userWebsites,
-    async (userWebsite, callback) => {
+    async (userWebsite) => {
       var website = await db.Website.findOne({
-        where: {id: userWebsite.id},
-        attributes: ['name', 'domain']
+        where: {id: userWebsite.website},
+        attributes: ['name', 'domain', 'active']
       });
-      user.websites.push(website);
-      callback();
+      console.log("Website: ", website);
+      if(website) user.websites.push(website);
     },
     () => {
       res.status(200).json(user);
