@@ -8,6 +8,7 @@ class Account extends Component {
     super(props);
     this.state = {
       nameChanged: false,
+      emailChanged: false,
     }
     this.checkChangeValues = this.checkChangeValues.bind(this);
   }
@@ -16,6 +17,7 @@ class Account extends Component {
     this.props.dispatch({type: "AUTH_MENU", payload: "settings"})
     document.getElementById('firstname').value = this.props.auth.user.firstname
     document.getElementById('lastname').value = this.props.auth.user.lastname
+    document.getElementById('email').value = this.props.auth.user.email
   }
   render() {
     let user = this.props.auth.user;
@@ -65,8 +67,16 @@ class Account extends Component {
                     <label htmlFor="lastname">Email</label>
                   </div>
                   <div className="col-sm-6">
-                    <input type="email" value={user.email} disabled/>
-                    <a className="btn-text">Change email</a>
+                    <input type="email" id="email" name="email" onChange={this.checkChangeValues}/>
+                  </div>
+                </div>
+              </div>
+              <div className="input-group inline">
+                <div className="row">
+                  <div className="col-sm-6 offset-2">
+                    <If condition={this.state.emailChanged}>
+                      <button type="button" className="btn primary" onClick={this.onEmailUpdate.bind(this)}>Update</button>
+                    </If>
                   </div>
                 </div>
               </div>
@@ -88,11 +98,18 @@ class Account extends Component {
     );
   }
   checkChangeValues() {
-    if(document.getElementById('firstname').value != this.props.auth.user.firstname || document.getElementById('lastname').value != this.props.auth.user.lastname)
+    let user = this.props.auth.user;
+    if(document.getElementById('firstname').value != user.firstname || document.getElementById('lastname').value != user.lastname)
     {
       this.setState({nameChanged: true});
     } else {
       this.setState({nameChanged: false});
+    }
+    if(document.getElementById('email').value != user.email)
+    {
+      this.setState({emailChanged: true});
+    } else {
+      this.setState({emailChanged: false});
     }
   }
   onBasicUpdate() {
@@ -105,6 +122,28 @@ class Account extends Component {
     axios.post(api('account/basic/update'), data)
     .then(res => {
       if(fh.is_success(res.data)) {
+      } else {
+        fh.set_multierrors(res.data);
+      }
+    })
+    .catch(err=> {fh.show_errorpage(err)})
+    .finally(() => {
+      fh.show_button();
+    })
+  }
+  onEmailUpdate() {
+    fh.hide_button();
+    fh.remove_all_errros('formUpdateAccount');
+    let data = {
+      email:  document.getElementById('email').value,
+    }
+    axios.post(api('account/email/update'), data)
+    .then(res => {
+      if(fh.is_success(res.data)) {
+        Swal.SingleDialog.fire({
+          type: "info",
+          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        })
       } else {
         fh.set_multierrors(res.data);
       }
