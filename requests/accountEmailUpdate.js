@@ -3,10 +3,7 @@ const rb = require('./../utils/response-builder');
 
 module.exports = (req, res, next) => {
     req.check('email')
-        .notEmpty().withMessage('Email is required.')
-        .custom((val) => {
-            return user == null;
-        }).withMessage('Email is already registered.')
+    .notEmpty().withMessage('Email is required.')
 
     if (rb.checkErrors(req, res)) return;
 
