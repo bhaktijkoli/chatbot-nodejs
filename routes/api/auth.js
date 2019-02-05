@@ -58,7 +58,6 @@ router.get('/get', [authMiddleware], async (req, res) => {
         where: {id: userWebsite.website, active: {[Op.gte]: 0}},
         attributes: ['name', 'domain', 'active']
       });
-      console.log("Website: ", website);
       if(website) user.websites.push(website);
     },
     () => {

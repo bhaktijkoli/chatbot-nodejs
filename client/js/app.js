@@ -15,3 +15,8 @@ window.api = function(url) {
 import App from './app/App';
 
 ReactDOM.render(<BrowserRouter><Provider store={store}><App/></Provider></BrowserRouter>, document.getElementById('root'));
+
+window.Swal.Toast = Swal.mixin({
+  toast: false,
+  showConfirmButton: false,
+});

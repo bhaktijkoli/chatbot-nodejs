@@ -29,7 +29,8 @@ window.fh = {
     var elements = document.getElementById(element).querySelectorAll('.input-group');
     elements.forEach(function(el) {
       el.classList.remove('has-error');
-      el.querySelector('.help-block').innerHTML = "";
+      var helpBlock = el.querySelector('.help-block');
+      if(helpBlock) helpBlock.innerHTML = "";
     });
   },
 

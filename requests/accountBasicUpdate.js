@@ -10,8 +10,8 @@ module.exports = (req, res, next) => {
     if (rb.checkErrors(req, res)) return;
 
     req.data = {
-        firstname: req.user.firstname,
-        lastname: req.user.lastname
+        firstname: req.body.firstname,
+        lastname: req.body.lastname
     };
     next();
 }

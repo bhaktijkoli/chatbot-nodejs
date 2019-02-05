@@ -34,6 +34,7 @@ class Account extends Component {
                   </div>
                   <div className="col-sm-6">
                     <input type="text" id="firstname" name="text" placeholder="Enter your firstname" onChange={this.checkChangeValues}/>
+                    <p className="help-block"></p>
                   </div>
                 </div>
               </div>
@@ -44,6 +45,7 @@ class Account extends Component {
                   </div>
                   <div className="col-sm-6">
                     <input type="text" id="lastname" name="text" placeholder="Enter your lastname" onChange={this.checkChangeValues}/>
+                    <p className="help-block"></p>
                   </div>
                 </div>
               </div>
@@ -51,7 +53,7 @@ class Account extends Component {
                 <div className="row">
                   <div className="col-sm-6 offset-2">
                     <If condition={this.state.nameChanged}>
-                      <button className="btn primary">Save</button>
+                      <button type="button" className="btn primary" onClick={this.onBasicUpdate.bind(this)}>Save</button>
                     </If>
                   </div>
                 </div>
@@ -92,6 +94,25 @@ class Account extends Component {
     } else {
       this.setState({nameChanged: false});
     }
+  }
+  onBasicUpdate() {
+    fh.hide_button();
+    fh.remove_all_errros('formUpdateAccount');
+    let data = {
+      firstname:  document.getElementById('firstname').value,
+      lastname:  document.getElementById('lastname').value,
+    }
+    axios.post(api('account/basic/update'), data)
+    .then(res => {
+      if(fh.is_success(res.data)) {
+      } else {
+        fh.set_multierrors(res.data);
+      }
+    })
+    .catch(err=> {fh.show_errorpage(err)})
+    .finally(() => {
+      fh.show_button();
+    })
   }
 }
 
