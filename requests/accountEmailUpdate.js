@@ -1,7 +1,7 @@
 const db = require('./../models');
 const rb = require('./../utils/response-builder');
 
-module.exports = async (req, res, next) => {
+module.exports = (req, res, next) => {
     req.check('email')
         .notEmpty().withMessage('Email is required.')
         .custom((val) => {
@@ -11,7 +11,7 @@ module.exports = async (req, res, next) => {
     if (rb.checkErrors(req, res)) return;
 
     req.data = {
-        email: req.body.email
+        email: req.user.email
     };
     next();
 }

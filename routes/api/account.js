@@ -12,10 +12,10 @@ const rb = require('./../../utils/response-builder');
 router.post('/basic/update', [authMiddleware, accountBasicUpdate], async (req, res) => {
     let user = await db.User.update(req.data, {
         where: {
-            id: req.user.id
+            id: req.user.id,
         }
     });
-    rb.sendSuccess(res, "Basic Information updated successfully!")
+    rb.sendSuccess(res, "User information updated")
 });
 
 router.post('/email/update', [authMiddleware, accountEmailUpdate], async (req, res) => {

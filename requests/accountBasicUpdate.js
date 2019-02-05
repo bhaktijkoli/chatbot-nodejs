@@ -1,7 +1,7 @@
 const db = require('./../models');
 const rb = require('./../utils/response-builder');
 
-module.exports = async (req, res, next) => {
+module.exports = (req, res, next) => {
     req.check('firstname')
         .notEmpty().withMessage('First Name is required.');
     req.check('lastname')
@@ -10,8 +10,8 @@ module.exports = async (req, res, next) => {
     if (rb.checkErrors(req, res)) return;
 
     req.data = {
-        firstname: req.body.firstname,
-        lastname: req.body.lastname
+        firstname: req.user.firstname,
+        lastname: req.user.lastname
     };
     next();
 }
