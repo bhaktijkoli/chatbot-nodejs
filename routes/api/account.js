@@ -22,17 +22,9 @@ router.post('/basic/update', [authMiddleware, accountBasicUpdate], async (req, r
 });
 
 router.post('/email/update', [authMiddleware, accountEmailUpdate], async (req, res) => {
-    // let user = await db.User.update(req.data, {
-    //     where: {
-    //         id: req.user.id,
-    //     }
-    // });
-
-
-    //Email verification for updation of email
     let ev = await db.EmailVerification.create({
         user: req.user.id,
-        email: req.user.email,
+        email: req.body.email,
         token: randToken.generate(64)
     });
     Email.send(req.user.email, 'email_verification', {

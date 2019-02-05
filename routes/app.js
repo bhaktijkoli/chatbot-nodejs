@@ -24,9 +24,10 @@ router.get('/verification', async (req, res)=>{
   });
   if(ev){
     let user = await db.User.update(
-      {verified: '1'}, 
+      {verified: '1', email: ev.email},
       {where: {id: ev.user}}
     );
+    ev.destroy();
     res.send('Verification Successful!');
   }
   else{
