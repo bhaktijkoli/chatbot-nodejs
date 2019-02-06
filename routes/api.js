@@ -8,5 +8,6 @@ router.get('/', (req, res) => {
 router.use('/auth', require('./api/auth'));
 router.use('/website', require('./api/website'));
 router.use('/account', require('./api/account'));
+router.use('/chatbox', require('./api/chatbox'));
 
 module.exports = router;
