@@ -1,4 +1,3 @@
-const bcrypt = require('bcrypt');
 const db = require('./../models');
 const rb = require('./../utils/response-builder');
 
