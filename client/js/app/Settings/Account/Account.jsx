@@ -10,6 +10,7 @@ class Account extends Component {
       nameChanged: false,
       emailChanged: false,
       passwordChange: false,
+      avatar: ''
     }
     this.checkChangeValues = this.checkChangeValues.bind(this);
   }
@@ -19,6 +20,7 @@ class Account extends Component {
     document.getElementById('firstname').value = this.props.auth.user.firstname
     document.getElementById('lastname').value = this.props.auth.user.lastname
     document.getElementById('email').value = this.props.auth.user.email
+    this.setState({avatar: Avatar(this.props.auth.user.avatar)})
   }
   render() {
     let user = this.props.auth.user;
@@ -29,7 +31,7 @@ class Account extends Component {
           <div className="card-header">
             <h2 className="card-title">Account Settings</h2>
             <p className="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <form id="formUpdateAccount">
+            <form id="formUpdateAccount" enctype="multipart/form-data">
               <div className="input-group inline">
                 <div className="col-sm-2">
                   <label htmlFor="firstname">Firstname</label>
@@ -69,6 +71,21 @@ class Account extends Component {
                   <If condition={this.state.emailChanged}>
                     <button type="button" className="btn primary" onClick={this.onEmailUpdate.bind(this)}>Update</button>
                   </If>
+                </div>
+              </div>
+              <div className="divider"/>
+              <div className="input-group inline">
+                <div className="col-sm-2">
+                  <label htmlFor="lastname">Avatar</label>
+                </div>
+                <div className="col-sm-6">
+                  <div className="user-avatar-container">
+                    <img src={this.state.avatar} className="large" alt="Avatar" />
+                    <div className="change-container" onClick={this.openFileInput.bind(this)}>
+                      <span className="typcn typcn-pencil"></span>
+                      <input type="file" id="avatar" name="avatar" style={{display:'none'}} accept="image/*" onChange={this.onAvatarChange.bind(this)}/>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="divider"/>
@@ -185,6 +202,16 @@ class Account extends Component {
     .catch(err=> {fh.show_errorpage(err)})
     .finally(() => {
       fh.show_button();
+    })
+  }
+  openFileInput() {
+    document.getElementById('avatar').click();
+  }
+  onAvatarChange(e) {
+    let form = document.getElementById('formUpdateAccount');
+    axios.post(api('account/avatar/update'), new FormData(form))
+    .then(res => {
+
     })
   }
 }

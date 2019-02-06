@@ -9,7 +9,7 @@ module.exports.verifyAuthToken = (token, callback) => {
           where: {
             id: decoded.id,
           },
-          attributes: ['id', 'firstname', 'lastname', 'email']
+          attributes: ['id', 'firstname', 'lastname', 'email', 'avatar']
         });
         if(user) {
           callback(true, user)

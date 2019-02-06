@@ -20,3 +20,11 @@ window.Swal.Toast = Swal.mixin({
   toast: false,
   showConfirmButton: false,
 });
+
+window.Avatar = (filename) => {
+  if(filename.length > 2) {
+    return '/public/avatars/'+filename
+  } else {
+    return '/img/avatar.png';
+  }
+}

@@ -162,23 +162,7 @@ body {
   width: 54px;
 }
 #sidebar .user-avatar-container {
-  position: relative;
   margin-top: 20px;
-}
-#sidebar .user-avatar-container img {
-  position: relative;
-  width: 42px;
-  border-radius: 5px;
-}
-#sidebar .status {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: green;
-  top: 36px;
-  right: 6px;
-  border: #1C242F 1px solid;
 }
 #sidebar .sidebar-menu {
   margin-top: 20px;
@@ -229,6 +213,47 @@ main {
 
 main .main-content {
   float: left;
+}
+
+.user-avatar-container {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+}
+.user-avatar-container img {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 5px;
+}
+.user-avatar-container img.large {
+  width: 72px;
+  height: 72px;
+}
+.user-avatar-container .status {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: green;
+  top: 36px;
+  right: 6px;
+  border: #1C242F 1px solid;
+}
+.user-avatar-container .change-container {
+  width: 32px;
+  height: 32px;
+  background: #00a8ff;
+  position: absolute;
+  border-radius: 50%;
+  bottom: 0px;
+  right: -25%;
+  text-align: center;
+  cursor: pointer;
+}
+.user-avatar-container .change-container span {
+  vertical-align: sub;
+  color: #FFF;
 }
 
 .spinner {

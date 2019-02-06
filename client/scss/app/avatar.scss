@@ -1,0 +1,40 @@
+.user-avatar-container {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  img {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-radius: 5px;
+  }
+  img.large {
+    width: 72px;
+    height: 72px;
+  }
+  .status {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: green;
+    top: 36px;
+    right: 6px;
+    border: $sidebar-color 1px solid;
+  }
+  .change-container {
+    width: 32px;
+    height: 32px;
+    background: $color-primary;
+    position: absolute;
+    border-radius: 50%;
+    bottom: 0px;
+    right: -25%;
+    text-align: center;
+    cursor: pointer;
+  }
+  .change-container span {
+    vertical-align: sub;
+    color: #FFF
+  }
+}

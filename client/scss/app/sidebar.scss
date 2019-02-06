@@ -12,23 +12,7 @@
     width: 54px;
   }
   .user-avatar-container {
-    position: relative;
     margin-top: 20px;
-  }
-  .user-avatar-container img {
-    position: relative;
-    width: 42px;
-    border-radius: 5px;
-  }
-  .status {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: green;
-    top: 36px;
-    right: 6px;
-    border: $sidebar-color 1px solid;
   }
   .sidebar-menu {
     margin-top: 20px;

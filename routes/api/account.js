@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const multer  = require('multer')
+const path = require('path');
+const uniqid = require('uniqid');
 const db = require('./../../models');
 const Op = db.Sequelize.Op
 const Email = require('./../../emails/email');
@@ -41,6 +44,36 @@ router.post('/password/update', [authMiddleware, accountPasswordUpdate], async (
         }
     });
     rb.sendSuccess(res, "Password updated successfully!")
+});
+
+var storageAvatar = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(req.app.locals.publicpath, 'public', 'avatars'))
+  },
+  filename: function (req, file, cb) {
+    req.filename = uniqid() + '.png';
+    cb(null, req.filename)
+  }
+})
+
+var uploadAvatar = multer({ storage: storageAvatar }).single('avatar');
+
+router.post('/avatar/update', [authMiddleware], async (req, res) => {
+  uploadAvatar(req, res, async (err) => {
+    if (err instanceof multer.MulterError) {
+      console.log(err);
+    } else if (err) {
+      console.log(err);
+    } else {
+      req.data = {
+        avatar: req.filename,
+      }
+      let user = await db.User.update(req.data, {
+        where: {id: req.user.id}
+      });
+      rb.sendSuccess(res, "Avatar Updated.");
+    }
+  });
 });
 
 module.exports = router;

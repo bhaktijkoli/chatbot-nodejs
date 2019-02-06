@@ -18,7 +18,7 @@ class Sidebar extends Component {
             </a>
           </div>
           <div className="user-avatar-container">
-            <img src="https://via.placeholder.com/54" alt="Avatar"/>
+            <img src={Avatar(this.props.auth.user.avatar)} alt="Avatar"/>
             <div className="status"></div>
           </div>
           <ul className="sidebar-menu">

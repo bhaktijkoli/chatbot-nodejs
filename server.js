@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
+const fs = require('fs');
 const app = express();
 const db = require('./models');
 
@@ -37,4 +38,13 @@ app.use('/', require('./routes/web'));
 
 app.listen(process.env.SERVER_PORT, () => console.log(`Server is listening on port ${process.env.SERVER_PORT}!`))
 
+// DB Sync
 db.sequelize.sync().then(()=> console.log("Connected to the database.")).catch(err=>console.error(err));
+
+// Directory Sync
+if(!fs.existsSync(path.join(app.locals.publicpath, 'public'))) {
+  fs.mkdirSync(path.join(app.locals.publicpath, 'public'));
+}
+if(!fs.existsSync(path.join(app.locals.publicpath, 'public', 'avatars'))) {
+  fs.mkdirSync(path.join(app.locals.publicpath, 'public', 'avatars'));
+}

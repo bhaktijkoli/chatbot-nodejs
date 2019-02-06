@@ -80,3 +80,6 @@ typings/
 
 # Config
 config/config.json
+
+# Public folder
+public/public/
