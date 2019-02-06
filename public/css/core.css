@@ -2379,6 +2379,9 @@ html {
   border-bottom: 1px solid #e2e2e2;
 }
 
+.input-group.inline {
+  display: flex;
+}
 .input-group.inline label {
   margin-top: 2px;
 }
