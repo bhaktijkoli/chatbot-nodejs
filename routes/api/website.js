@@ -49,6 +49,8 @@ router.get('/get/:id', [authMiddleware], async (req, res) => {
     where: {id: req.params.id}
   });
   website = website.dataValues;
+  let chatBox = await db.Chatbox.findOne({website: website.id});
+  website.chatbox = chatBox.dataValues;
   res.status(200).json(website);
 })
 

@@ -11,9 +11,9 @@ const chatboxBasicUpdate = require('./../../requests/chatboxBasicUpdate')
 
 const rb = require('./../../utils/response-builder');
 
-router.post('/basic/update', [authMiddleware, chatboxMiddleware, chatboxBasicUpdate], async (req, res) => {
+router.post('/update/basic', [authMiddleware, chatboxMiddleware, chatboxBasicUpdate], async (req, res) => {
   let chatbox = await db.Chatbox.update(req.data, {
-    where: { chatbox: req.chatbox.id }
+    where: { id: req.chatbox.id }
   });
   rb.sendSuccess(res, "Chatbot Basic Settings updated")
 });
