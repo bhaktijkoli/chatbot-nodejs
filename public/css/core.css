@@ -2334,6 +2334,11 @@ html {
   transition: 0s;
 }
 
+.btn.small {
+  width: 50px;
+  min-width: 50px;
+}
+
 .btn-text {
   color: #00a8ff;
   cursor: pointer;
@@ -2363,6 +2368,11 @@ html {
 }
 .input-group input:focus, .input-group input:active, .input-group select:focus, .input-group select:active {
   border: 1px solid #00a8ff;
+}
+.input-group input[disabled], .input-group input[readonly] {
+  cursor: not-allowed;
+  background-color: #eee;
+  opacity: 1;
 }
 .input-group .help-block {
   font-size: 0.8em;

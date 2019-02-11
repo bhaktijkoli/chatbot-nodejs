@@ -66,6 +66,10 @@
   -o-transition:0s;
   transition:0s;
 }
+.btn.small {
+  width: 50px;
+  min-width: 50px;
+}
 .btn-text {
   color: $color-primary;
   cursor: pointer;

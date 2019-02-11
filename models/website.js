@@ -1,3 +1,5 @@
+const randToken = require('rand-token');
+
 module.exports = (sequelize, DataTypes) => {
   var Website = sequelize.define('Website', {
     name: {type: DataTypes.STRING},
@@ -9,9 +11,16 @@ module.exports = (sequelize, DataTypes) => {
     plan: {type: DataTypes.ENUM, values: ['0', '1', '2'], defaultValue: '0'},
     owner: {type: DataTypes.INTEGER},
     active: {type: DataTypes.INTEGER, defaultValue: '-1'},
+    key: {type: DataTypes.STRING}
   }, {
     hooks: {
       afterCreate: async (website, options) => {
+        do {
+          var token = randToken.generate(16);
+          web = await website.sequelize.models.Website.findOne({where: {key: token}});
+        } while(web!=null)
+        website.key = token;
+        website.save();
         var chatbox = await website.sequelize.models.Chatbox.create({
           website: website.id,
         })

@@ -6,6 +6,7 @@ import Account from './Account/Account.jsx'
 import Notifications from './Notifications/Notifications.jsx'
 import Payments from './Payments/Payments.jsx'
 import Websites from './Websites/Websites.jsx'
+import WebsiteEdit from './WebsiteEdit/WebsiteEdit.jsx'
 
 class Settings extends Component {
   componentDidMount() {
@@ -81,6 +82,7 @@ class Settings extends Component {
               <Route path="/settings/account" component={Account} />
               <Route path="/settings/notifications" component={Notifications} />
               <Route path="/settings/payments" component={Payments} />
+              <Route path="/settings/websites/:id" component={WebsiteEdit} />
               <Route path="/settings/websites" component={Websites} />
             </Switch>
           </div>

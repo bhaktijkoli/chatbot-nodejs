@@ -14,7 +14,7 @@ class Account extends Component {
           <td>{el.name}</td>
           <td>{el.domain}</td>
           <td className={el.active?'success':'danger'}>{this.getStatusText(el.active)}</td>
-          <td><Link to="/" className="btn-text">Settings</Link></td>
+          <td><Link to={"/settings/websites/"+el.id} className="btn-text">Settings</Link></td>
         </tr>
       )
     })
