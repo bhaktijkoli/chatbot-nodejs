@@ -41,6 +41,9 @@ app.listen(process.env.SERVER_PORT, () => console.log(`Server is listening on po
 // DB Sync
 db.sequelize.sync().then(()=> console.log("Connected to the database.")).catch(err=>console.error(err));
 
+// Socket Server
+require('./sockets/socket.io.js')
+
 // Directory Sync
 if(!fs.existsSync(path.join(app.locals.publicpath, 'public'))) {
   fs.mkdirSync(path.join(app.locals.publicpath, 'public'));

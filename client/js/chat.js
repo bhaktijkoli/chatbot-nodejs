@@ -1,4 +1,6 @@
+var io = require('./chat/socket.io')
 var httpSessionUrl = 'http://api.chat.ai:3000/chat/session/get/';
+var httpSocketUrl = 'http://localhost:3020';
 var chatContianer = document.querySelector('#chat-container');
 var chatWindow = document.querySelector('#chat-window');
 var chatWindowClose = document.querySelector('#chat-window-close');
@@ -10,7 +12,6 @@ var chatWindowInputPlaceholder = document.querySelector('chat-window-input::plac
 var chatMessageContainer = document.getElementById('chat-message-container');
 var chatbox = null;
 var session = null;
-
 var chat = {
   openWindow: function() {
     chatWindow.classList.add('active');
@@ -34,6 +35,7 @@ window.chat = {
         var res = JSON.parse(this.responseText);
         chatbox = res.chatbox;
         session = res.session;
+        window.chat.socket = io(httpSocketUrl);
         initChatbot();
       }
     };
