@@ -8,6 +8,7 @@ module.exports = {
     auth: './auth.js',
     web: './web.js',
     chat: './chat.js',
+    other: './other.js',
   },
   output: {
     path: path.join(__dirname, "public/js"),

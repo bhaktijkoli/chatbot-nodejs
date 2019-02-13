@@ -80,6 +80,89 @@ body {
 }
 .messages-sidebar ul {
   margin: 0px;
+  padding: 20px 0px;
+}
+.messages-sidebar .chat-item {
+  display: block;
+  width: inherit;
+  height: 100%;
+  padding: 10px 15px;
+  border-bottom: 1px solid #e2e2e2;
+  cursor: pointer;
+  transition: 300ms;
+}
+.messages-sidebar .chat-time {
+  float: right;
+  display: inline-block;
+}
+.messages-sidebar .chat-time p {
+  font-size: 0.6em;
+}
+.messages-sidebar .chat-item:hover {
+  background-color: #0000000a;
+}
+.messages-sidebar .chat-icon {
+  border-radius: 2px;
+  padding: 5px 15px;
+  color: #FFFFFF;
+  width: fit-content;
+  font-size: 1.5em;
+  display: inline-block;
+  vertical-align: top;
+}
+.messages-sidebar .chat-item.red .chat-icon {
+  background-color: #e74c3c;
+  background-image: linear-gradient(120deg, #e74c3c 0%, #d62c1a 100%);
+}
+.messages-sidebar .chat-item.red.active {
+  background-color: #0000000a;
+  border-left: 5px solid #e74c3c;
+}
+.messages-sidebar .chat-item.green .chat-icon {
+  background-color: #2ecc71;
+  background-image: linear-gradient(120deg, #2ecc71 0%, #25a25a 100%);
+}
+.messages-sidebar .chat-item.green.active {
+  background-color: #0000000a;
+  border-left: 5px solid #2ecc71;
+}
+.messages-sidebar .chat-item.yellow .chat-icon {
+  background-color: #f1c40f;
+  background-image: linear-gradient(120deg, #f1c40f 0%, #c29d0b 100%);
+}
+.messages-sidebar .chat-item.yellow.active {
+  background-color: #0000000a;
+  border-left: 5px solid #f1c40f;
+}
+.messages-sidebar .chat-item.blue .chat-icon {
+  background-color: #3498db;
+  background-image: linear-gradient(120deg, #3498db 0%, #217dbb 100%);
+}
+.messages-sidebar .chat-item.blue.active {
+  background-color: #0000000a;
+  border-left: 5px solid #3498db;
+}
+.messages-sidebar .chat-text {
+  color: #212529;
+  padding: 5px 15px;
+  width: fit-content;
+  max-width: 130px;
+  display: inline-block;
+}
+.messages-sidebar .chat-text .title {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  font-size: 0.8;
+  font-weight: bold;
+}
+.messages-sidebar .chat-text .subtitle {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  font-size: 0.7em;
+  max-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 #settings-menu {
