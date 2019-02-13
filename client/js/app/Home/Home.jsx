@@ -7,6 +7,11 @@ class Home extends Component {
     document.title = "Home"
     this.props.dispatch({type: "AUTH_MENU", payload: "inbox"})
   }
+  componentDidUpdate(prevProps) {
+    if (this.props.auth.website !== prevProps.auth.website) {
+      axios.get(api('/inbox/get/')+this.props.auth.website.id)
+    }
+  }
   render() {
     return (
       <main>

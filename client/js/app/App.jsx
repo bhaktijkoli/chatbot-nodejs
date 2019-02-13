@@ -32,6 +32,9 @@ class App extends Component {
       }
       this.props.dispatch({type: "AUTH_USER", payload: res.data})
       this.props.dispatch({type: "AUTH_WEBSITES", payload: res.data.websites})
+      if(res.data.websites.length > 0) {
+        this.props.dispatch({type: "AUTH_SET_WEBSITE", payload: res.data.websites[0]})
+      }
     })
     .catch(err=> {fh.show_errorpage(err)});
   }
