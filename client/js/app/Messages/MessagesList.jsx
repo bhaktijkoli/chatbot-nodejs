@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-class InboxList extends Component {
+class MessagesList extends Component {
   render() {
     let auth = this.props.auth;
     let user = auth.user;
     let website = auth.website;
-    let inbox = auth.inbox;
-    let inboxItems = inbox.map((el, key)=> {
+    let chats = auth.chats;
+    let chatItems = chats.map((el, key)=> {
       return(
         <li key={key}>
           {el.name}
@@ -15,13 +15,13 @@ class InboxList extends Component {
       )
     })
     return (
-      <div className="inbox-sidebar">
+      <div className="messages-sidebar">
         <ul>
-          {inboxItems}
+          {chatItems}
         </ul>
       </div>
     );
   }
 }
 
-export default withRouter(InboxList);
+export default withRouter(MessagesList);

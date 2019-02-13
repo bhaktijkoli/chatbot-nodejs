@@ -3,6 +3,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 
 import Home from './Home/Home.jsx';
+import Messages from './Messages/Messages.jsx';
 import Settings from './Settings/Settings.jsx';
 import AddWebsite from './AddWebsite/AddWebsite.jsx';
 
@@ -17,6 +18,7 @@ class App extends Component {
           <Sidebar auth={this.props.auth}/>
           <Switch>
             <Route exact path="/" component={Home}/>
+            <Route path="/messages" component={Messages}/>
             <Route path="/settings" component={Settings}/>
             <Route path="/websites/add" component={AddWebsite}/>
           </Switch>

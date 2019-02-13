@@ -73,10 +73,13 @@ body {
     content: "Actions";
   }
 }
-.inbox-sidebar {
+.messages-sidebar {
   width: 100%;
   min-height: 100vh;
   background-color: #FFFFFF;
+}
+.messages-sidebar ul {
+  margin: 0px;
 }
 
 #settings-menu {

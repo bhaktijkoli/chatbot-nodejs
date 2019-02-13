@@ -23,7 +23,10 @@ class Sidebar extends Component {
           </div>
           <ul className="sidebar-menu">
             <li className={this.getMenuClass('inbox')}>
-              <Link to="/" className="tooltip right"><span className="typcn typcn-messages"></span><p className="tooltip-text">Inbox</p></Link>
+              <Link to="/" className="tooltip right"><span className="typcn typcn-tabs-outline"></span><p className="tooltip-text">Inbox</p></Link>
+            </li>
+            <li className={this.getMenuClass('messages')}>
+              <Link to="/messages" className="tooltip right"><span className="typcn typcn-messages"></span><p className="tooltip-text">Messages</p></Link>
             </li>
             <li className={this.getMenuClass('visitors')}>
               <Link to="/visitors" className="tooltip right"><span className="typcn typcn-world"></span><p className="tooltip-text">Visitors</p></Link>
