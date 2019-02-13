@@ -11,7 +11,7 @@ class Home extends Component {
   }
   componentDidUpdate(prevProps) {
     if (this.props.auth.website !== prevProps.auth.website) {
-      axios.get(api('/inbox/get/')+this.props.auth.website.id).then(res=>{
+      axios.get(api('/chat/get/')+this.props.auth.website.id).then(res=>{
         this.props.dispatch({type: "AUTH_SET_INBOX", payload: res.data})
       })
     }

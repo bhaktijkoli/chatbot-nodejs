@@ -16,9 +16,9 @@ io.on('connection', (socket) => {
       socket.emit('authenticate.successfull');
       socket.on('event.message', async (data) => {
         console.log(session, data);
-        var count = await db.Inbox.count({where:{website: visitor.website}});
+        var count = await db.Chat.count({where:{website: visitor.website}});
         count++;
-        var inbox = await db.Inbox.create({
+        var chat = await db.Chat.create({
           name: 'Visitor'+count,
           website: visitor.website,
           user: 0,

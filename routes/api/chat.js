@@ -5,9 +5,16 @@ const uniqid = require('uniqid');
 const geoip = require('geoip-lite');
 const publicIp = require('public-ip');
 
+const authMiddleware = require('./../../middlewares/authMiddleware');
+const websiteMiddleware = require('./../../middlewares/websiteMiddleware');
 const chatMiddleware = require('./../../middlewares/chatMiddleware')
 
 const Visitor = require('./../../mongo/visitor')
+const VisitorMessage = require('./../../mongo/visitor_message');
+
+const rb = require('./../../utils/response-builder');
+
+const each = require('async/each');
 
 router.get('/session/get/:key', [chatMiddleware], async (req, res) => {
   let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -37,6 +44,22 @@ router.get('/session/get/:key', [chatMiddleware], async (req, res) => {
     session: session,
   }
   res.status(200).json(data);
+});
+
+router.get('/get/:id', [authMiddleware, websiteMiddleware], async (req, res) => {
+  let inboxes = await db.Chat.findAll({where:{website: req.params.id}});
+  let inboxesData = [];
+  each(inboxes,
+    async (inbox) => {
+      var data = inbox.dataValues;
+      var lastMessage = await VisitorMessage.findOne({session: data.visitor_session}).sort({createdAt: -1});
+      data.lastMessage = lastMessage;
+      inboxesData.push(data);
+    },
+    () => {
+      res.status(200).json(inboxesData);
+    }
+  );
 });
 
 module.exports = router;
