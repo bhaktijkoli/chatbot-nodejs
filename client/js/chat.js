@@ -36,7 +36,10 @@ window.chat = {
         chatbox = res.chatbox;
         session = res.session;
         window.chat.socket = io(httpSocketUrl);
-        initChatbot();
+        window.chat.socket.emit('authenticate', {session:session});
+        window.chat.socket.on('authenticate.successfull', function() {
+          initChatbot();
+        })
       }
     };
     xhttp.open("GET", httpSessionUrl+key, true);
@@ -63,6 +66,7 @@ function initChatbot() {
     event.preventDefault();
     if (event.keyCode === 13) {
       insertMessage(chatWindowInput.value, 'right');
+      window.chat.socket.emit('event.message', {message: chatWindowInput.value})
       chatWindowInput.value = "";
      }
   })

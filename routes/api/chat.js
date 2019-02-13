@@ -17,6 +17,7 @@ router.get('/session/get/:key', [chatMiddleware], async (req, res) => {
   }
   var geo = await geoip.lookup(ip);
   let visitor = Visitor.create({
+    website: req.website.id,
     session: session,
     country: geo.country,
     city: geo.city,

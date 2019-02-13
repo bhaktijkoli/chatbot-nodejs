@@ -7,6 +7,7 @@ const CoordsSchema = new Schema({
 })
 
 const VisitorSchema = new Schema({
+  website: { type: Number, required: true },
   session: { type: String, required: true },
   country: { type: String, required: true },
   city: { type: String, required: true },
