@@ -5,6 +5,7 @@ const io = require('socket.io')(server);
 
 const db = require('./../models');
 const Visitor = require('./../mongo/visitor')
+const VisitorMessage = require('./../mongo/visitor_message')
 
 
 io.on('connection', (socket) => {
@@ -22,6 +23,12 @@ io.on('connection', (socket) => {
           website: visitor.website,
           user: 0,
           visitor_session: session,
+        })
+        var message = VisitorMessage.create({
+          user: 0,
+          session: session,
+          sender: 0,
+          message: data.message,
         })
       })
     }

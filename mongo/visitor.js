@@ -24,5 +24,5 @@ const VisitorSchema = new Schema({
   timestamps: true,
 });
 
-const Visitor = mongoose.models.company || mongoose.model('visitors', VisitorSchema);
+const Visitor = mongoose.models.visitors || mongoose.model('visitors', VisitorSchema);
 module.exports = Visitor;
