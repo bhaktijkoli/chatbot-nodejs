@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
+const useragent = require('express-useragent');
 const fs = require('fs');
 const app = express();
 const db = require('./models');
@@ -26,6 +27,7 @@ app.use(cors());
 app.use(cookieParser())
 app.use(bodyParser.json());
 app.use(expressValidator());
+app.use(useragent.express());
 
 // Public Path
 app.locals.publicpath = path.join(__dirname, 'public');
@@ -43,6 +45,9 @@ db.sequelize.sync().then(()=> console.log("Connected to the database.")).catch(e
 
 // Socket Server
 require('./sockets/socket.io.js')
+
+// Mongoose
+require('./mongo/mongoose')
 
 // Directory Sync
 if(!fs.existsSync(path.join(app.locals.publicpath, 'public'))) {
