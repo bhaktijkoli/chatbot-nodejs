@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 
+import InboxList from './InboxList'
+
 class Home extends Component {
   componentDidMount() {
     document.title = "Home"
@@ -9,14 +11,20 @@ class Home extends Component {
   }
   componentDidUpdate(prevProps) {
     if (this.props.auth.website !== prevProps.auth.website) {
-      axios.get(api('/inbox/get/')+this.props.auth.website.id)
+      axios.get(api('/inbox/get/')+this.props.auth.website.id).then(res=>{
+        this.props.dispatch({type: "AUTH_SET_INBOX", payload: res.data})
+      })
     }
   }
   render() {
     return (
       <main>
-        <div className="main-content">
-          <h1>Home</h1>
+        <div className="row">
+          <div className="col-sm-3">
+            <InboxList auth={this.props.auth}/>
+          </div>
+          <div className="col-sm-9">
+          </div>
         </div>
       </main>
     );

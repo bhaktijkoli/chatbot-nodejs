@@ -2,6 +2,7 @@ var initialState = {
   user: null,
   website: null,
   websites: [],
+  inbox: [],
   menu: 'home',
 }
 export default function reducer(state=initialState, action) {
@@ -15,6 +16,9 @@ export default function reducer(state=initialState, action) {
     }
     case "AUTH_SET_WEBSITE": {
       return {...state, website: action.payload}
+    }
+    case "AUTH_SET_INBOX": {
+      return {...state, inbox: action.payload}
     }
     case "AUTH_MENU": {
       return {...state, menu: action.payload}

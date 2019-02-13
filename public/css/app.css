@@ -73,6 +73,12 @@ body {
     content: "Actions";
   }
 }
+.inbox-sidebar {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #FFFFFF;
+}
+
 #settings-menu {
   width: 100%;
   min-height: 100vh;
