@@ -62,4 +62,12 @@ router.get('/get/:id', [authMiddleware, websiteMiddleware], async (req, res) => 
   );
 });
 
+router.get('/get/details/:id', [authMiddleware], async(req, res) => {
+  let chat = await db.Chat.findOne({where: {id: req.params.id}});
+  let chatData = chat.dataValues;
+  chatData.messages = await VisitorMessage.find({session: chat.visitor_session});
+  chatData.visitor = await Visitor.findOne({session: chat.visitor_session});
+  res.status(200).json(chatData)
+})
+
 module.exports = router;

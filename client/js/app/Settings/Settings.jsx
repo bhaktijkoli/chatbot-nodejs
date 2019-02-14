@@ -26,7 +26,7 @@ class Settings extends Component {
   render() {
     return (
       <main>
-        <div className="row">
+        <div className="row no-gutters">
           <div className="col-sm-3">
             <div id="settings-menu">
               <ul>
