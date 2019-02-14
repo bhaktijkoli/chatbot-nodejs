@@ -13,6 +13,8 @@ const websiteUpdatePlan = require('./../../requests/websiteUpdatePlan');
 const websiteAddOperator = require('./../../requests/websiteAddOperator');
 const rb = require('./../../utils/response-builder');
 
+const Email = require('./../../emails/email');
+
 router.post('/add', [authMiddleware, websiteAddRequest], async (req, res) => {
   let website = await db.Website.create(req.data);
   let userWebsite = await db.UserWebsite.create({user: req.user.id, website: website.id, access: '1'});
@@ -55,6 +57,7 @@ router.post('/add/operator', [authMiddleware, websiteMiddleware, websiteAddOpera
     type: 'operator',
     token: randToken.generate(64),
   });
+  Email.send(req.body.email, 'operator_invite', {user: req.userOperator, website: req.website, invite: userInvite});
   rb.sendSuccess(res, "Invitation sent")
 });
 

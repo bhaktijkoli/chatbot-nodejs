@@ -37,6 +37,23 @@ router.get('/verification', async (req, res)=>{
   }
 });
 
+router.get('/invite', async (req, res)=>{
+  let invite = await db.UserInvite.findOne({where:{token:req.query.token}});
+  if(invite.type == "operator") {
+    let user = await db.User.findOne({where:{email: invite.email}});
+    if(user) {
+      let userWebsite = await db.UserWebsite.create({
+        user: user.id,
+        website: invite.website,
+        access: '2',
+      });
+      res.redirect('/');
+      return;
+    }
+  }
+  res.status(404).send("Token Expired.")
+})
+
 function authTemplate(req, res) {
   res.render('auth', {title:'Welcome to Chatbot'});
 }
