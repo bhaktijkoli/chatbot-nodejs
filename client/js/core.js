@@ -6,8 +6,10 @@ window.Swal.SingleDialog = Swal.mixin({
   allowOutsideClick: false,
   allowEscapeKey: false,
   buttonsStyling: false,
-  confirmButtonClass: 'btn primary'
+  confirmButtonClass: 'btn primary',
+  cancelButtonClass: 'btn primary',
 });
+
 
 require('./core/formhandler');
 require('./core/cookiehandler');

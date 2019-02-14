@@ -9,6 +9,7 @@ module.exports = async (req, res, next) => {
       }
     });
     if(website.owner == req.user.id) {
+      req.website = website;
       next();
       return;
     }
