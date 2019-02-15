@@ -11,14 +11,19 @@ class Operators extends Component {
     this.toggleAddOperator = this.toggleAddOperator.bind(this)
     this.onInviteClick = this.onInviteClick.bind(this)
     this.onRemoveOperator = this.onRemoveOperator.bind(this)
+    this.getRole = this.getRole.bind(this)
   }
   render() {
     var usersList = this.props.website.users.map((user, key) => {
       return(
         <tr key={key}>
           <td>{user.email}</td>
-          <td>{this.getRole(user.role)}</td>
-          <td><a onClick={e=> this.onRemoveOperator(user, 0)} className="btn small danger"><span className="typcn typcn-trash"></span> </a></td>
+          <td>{this.getRole(user)}</td>
+          <td>
+            <If condition={this.props.website.owner != user.id}>
+              <a onClick={e=> this.onRemoveOperator(user, 0)} className="btn small danger"><span className="typcn typcn-trash"></span> </a>
+            </If>
+          </td>
         </tr>
       )
     })
@@ -130,8 +135,11 @@ class Operators extends Component {
       }
     })
   }
-  getRole(role) {
-    switch (role) {
+  getRole(user) {
+    if(user.id == this.props.website.owner) {
+      return "owner";
+    }
+    switch (user.role) {
       case '1':
       return 'Admin'
       default:
