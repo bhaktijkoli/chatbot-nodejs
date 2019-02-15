@@ -150,6 +150,10 @@ class Account extends Component {
     axios.post(api('account/basic/update'), data)
     .then(res => {
       if(fh.is_success(res.data)) {
+        Toast.show({
+          message: 'Account settings updated.',
+          ...window.Toast.success
+        });
       } else {
         fh.set_multierrors(res.data);
       }
@@ -211,7 +215,10 @@ class Account extends Component {
     let form = document.getElementById('formUpdateAccount');
     axios.post(api('account/avatar/update'), new FormData(form))
     .then(res => {
-
+      Toast.show({
+        message: 'Avatar updated.',
+        ...window.Toast.success
+      });
     })
   }
 }
