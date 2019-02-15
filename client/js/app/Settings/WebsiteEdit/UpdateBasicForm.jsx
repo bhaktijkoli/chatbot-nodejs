@@ -73,6 +73,10 @@ class UpdateBasicForm extends Component {
     axios.post(api('website/update/basic'), data)
     .then(res => {
       if(fh.is_success(res.data)) {
+        Toast.show({
+          message: 'Website settings updated.',
+          ...window.Toast.success
+        });
       } else {
         fh.set_multierrors(res.data);
       }

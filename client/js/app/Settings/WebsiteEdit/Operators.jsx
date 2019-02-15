@@ -103,6 +103,10 @@ class Operators extends Component {
     axios.post(api('website/add/operator'), data)
     .then(res => {
       if(fh.is_success(res.data)) {
+        Toast.show({
+          message: `Invitation has been sent to ${data.email}.`,
+          ...window.Toast.success
+        });
       } else {
         fh.set_multierrors(res.data);
       }
