@@ -10,6 +10,16 @@ window.Swal.SingleDialog = Swal.mixin({
   cancelButtonClass: 'btn primary',
 });
 
+window.Swal.YesNo = Swal.mixin({
+  allowOutsideClick: false,
+  allowEscapeKey: false,
+  buttonsStyling: false,
+  confirmButtonClass: 'btn primary swal',
+  cancelButtonClass: 'btn default',
+  confirmButtonText: 'Yes',
+  cancelButtonText: 'Cancel',
+  showCancelButton: true,
+})
 
 require('./core/formhandler');
 require('./core/cookiehandler');

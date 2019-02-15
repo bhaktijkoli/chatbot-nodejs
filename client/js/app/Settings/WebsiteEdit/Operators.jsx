@@ -10,11 +10,43 @@ class Operators extends Component {
     }
     this.toggleAddOperator = this.toggleAddOperator.bind(this)
     this.onInviteClick = this.onInviteClick.bind(this)
+    this.onRemoveOperator = this.onRemoveOperator.bind(this)
   }
   render() {
+    var usersList = this.props.website.users.map((user, key) => {
+      return(
+        <tr key={key}>
+          <td>{user.email}</td>
+          <td>{this.getRole(user.role)}</td>
+          <td><a onClick={e=> this.onRemoveOperator(user, 0)} className="btn small danger"><span className="typcn typcn-trash"></span> </a></td>
+        </tr>
+      )
+    })
+    var pendingList = this.props.website.invites.map((invite, key) => {
+      return(
+        <tr key={key}>
+          <td>{invite.email}</td>
+          <td>Pending</td>
+          <td><a onClick={e=> this.onRemoveOperator(invite, 1)} className="btn small danger"><span className="typcn typcn-trash"></span> </a></td>
+        </tr>
+      )
+    })
     return (
-      <form id="websiteUpdateBasicForm">
+      <form id="websiteAddOperator">
         <h4>Website Operators</h4>
+        <table id="operators-table">
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {usersList}
+            {pendingList}
+          </tbody>
+        </table>
         <div className="space20"/>
         <If condition={!this.state.showAddForm}>
           <a className="btn-text" style={{marginLeft:10}} onClick={this.toggleAddOperator}>Add Operator</a>
@@ -57,7 +89,7 @@ class Operators extends Component {
   }
   onInviteClick() {
     fh.hide_button();
-    fh.remove_all_errros('websiteUpdateBasicForm');
+    fh.remove_all_errros('websiteAddOperator');
     let data = {
       website: this.props.website.id,
       email:  document.getElementById('email').value,
@@ -74,6 +106,37 @@ class Operators extends Component {
     .finally(() => {
       fh.show_button();
     })
+  }
+  onRemoveOperator(user, pending) {
+    var text = "Are you sure you want to remove " + user.firstname + "?";
+    if(pending == 1) {
+      text = "Are you sure you want to remove pending request for " + user.email + "?"
+    }
+    Swal.YesNo.fire({
+      text
+    }).then(res => {
+      if(res.value == true) {
+        let data = {
+          website: this.props.website.id,
+          user: user.id,
+          email: user.email,
+          pending: pending,
+        }
+        axios.post(api('website/remove/operator'), data)
+        .then(res => {
+
+        })
+        .catch(err=> {fh.show_errorpage(err)});
+      }
+    })
+  }
+  getRole(role) {
+    switch (role) {
+      case '1':
+      return 'Admin'
+      default:
+      return 'Member'
+    }
   }
 }
 

@@ -3,6 +3,8 @@ const router = express.Router();
 const db = require('./../../models');
 const randToken = require('rand-token');
 
+const each = require('async/each');
+
 const authMiddleware = require('./../../middlewares/authMiddleware');
 const websiteMiddleware = require('./../../middlewares/websiteMiddleware');
 
@@ -61,14 +63,45 @@ router.post('/add/operator', [authMiddleware, websiteMiddleware, websiteAddOpera
   rb.sendSuccess(res, "Invitation sent")
 });
 
+router.post('/remove/operator', [authMiddleware, websiteMiddleware], async (req, res) => {
+  let user = null;
+  if(req.body.pending == 1) {
+    user = await db.UserInvite.findOne({where:{website: req.body.website, email: req.body.email}});
+  } else {
+    user = await db.UserWebsite.findOne({where:{website: req.body.website, user: req.body.user}});
+  }
+  if(user) {
+    user.destroy();
+    rb.sendSuccess(res, "Operator removed");
+  } else {
+    res.status(404).send("Operator Not Found");
+  }
+});
+
 router.get('/get/:id', [authMiddleware], async (req, res) => {
   let website = await db.Website.findOne({
     where: {id: req.params.id}
   });
   website = website.dataValues;
-  let chatBox = await db.Chatbox.findOne({website: website.id});
+  let chatBox = await db.Chatbox.findOne({where: {website: website.id}});
   website.chatbox = chatBox.dataValues;
-  res.status(200).json(website);
+  let userWebsites = await db.UserWebsite.findAll({where: {website: website.id}});
+  website.users = [];
+  each(userWebsites,
+    async (uw) => {
+      let user = await db.User.findOne({where: {id: uw.user}});
+      if(user) {
+        user = user.dataValues;
+        user.role = uw.access;
+        website.users.push(user);
+      }
+    },
+    async () => {
+      let invites = await db.UserInvite.findAll({where: {website: website.id, type: 'operator'}});
+      website.invites = invites;
+      res.status(200).json(website);
+    }
+  );
 })
 
 

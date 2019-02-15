@@ -2304,6 +2304,20 @@ html {
   background-color: #00a8ff;
 }
 
+.btn.danger {
+  color: #FFFFFF;
+  background-color: #e74c3c;
+}
+
+.btn.default {
+  color: #FFFFFF;
+  background-color: #b3b2b2;
+}
+
+.btn.swal {
+  margin-right: 20px;
+}
+
 .btn:active {
   background-image: none;
 }
@@ -2335,6 +2349,7 @@ html {
 }
 
 .btn.small {
+  padding: 0px;
   width: 50px;
   min-width: 50px;
 }
@@ -2343,6 +2358,10 @@ html {
   color: #00a8ff;
   cursor: pointer;
   text-decoration: none;
+}
+
+.btn-text.danger {
+  color: #e74c3c;
 }
 
 .input-group {

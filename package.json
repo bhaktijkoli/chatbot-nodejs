@@ -4,7 +4,7 @@
   "description": "chatbot",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js --ignore './client/ç'",
+    "start": "nodemon server.js --ignore '/client/' --ignore '/public/'",
     "dev": "webpack --mode development",
     "watch": "webpack --mode development --watch",
     "build": "webpack --mode production",

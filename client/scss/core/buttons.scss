@@ -38,6 +38,17 @@
   color:#FFFFFF;
   background-color:$color-primary;
 }
+.btn.danger {
+  color: #FFFFFF;
+  background-color: $color-danger;
+}
+.btn.default {
+  color: #FFFFFF;
+  background-color: #b3b2b2;
+}
+.btn.swal {
+  margin-right: 20px;
+}
 // Button
 .btn:active{
   background-image:none;
@@ -67,6 +78,7 @@
   transition:0s;
 }
 .btn.small {
+  padding: 0px;
   width: 50px;
   min-width: 50px;
 }
@@ -74,4 +86,7 @@
   color: $color-primary;
   cursor: pointer;
   text-decoration: none;
+}
+.btn-text.danger {
+  color: $color-danger
 }
