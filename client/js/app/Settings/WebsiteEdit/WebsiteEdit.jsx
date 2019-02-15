@@ -12,6 +12,7 @@ class WebsiteEdit extends Component {
     this.state = {
       website: null,
     }
+    this.getWebsiteDetails = this.getWebsiteDetails.bind(this)
   }
   componentDidMount() {
     this.props.dispatch({type: "AUTH_MENU", payload: "settings"})
@@ -29,7 +30,7 @@ class WebsiteEdit extends Component {
             <p className="card-subtitle">Edit {website.name}</p>
             <div className="space20"/>
             <div className="space20"/>
-            <WebsiteEditForm user={this.props.auth.user} website={this.state.website}/>
+            <WebsiteEditForm user={this.props.auth.user} website={this.state.website} update={this.getWebsiteDetails}/>
           </div>
         </div>
       </div>

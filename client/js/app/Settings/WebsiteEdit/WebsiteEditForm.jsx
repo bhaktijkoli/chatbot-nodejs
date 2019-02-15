@@ -9,12 +9,11 @@ class WebsiteEdit extends Component {
     super(props);
   }
   render() {
-    let website = this.props.website;
     return (
       <div>
-        <UpdateBasicForm website={this.props.website} />
-        <UpdateChatboxBasicForm website={this.props.website} />
-        <Operators website={this.props.website} />
+        <UpdateBasicForm website={this.props.website} update={this.props.update}/>
+        <UpdateChatboxBasicForm website={this.props.website} update={this.props.update}/>
+        <Operators website={this.props.website} update={this.props.update}/>
       </div>
     );
   }

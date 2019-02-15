@@ -8,6 +8,11 @@ window.Toast.success = {
   theme: 'light',
   color: 'green',
 }
+window.Toast.red = {
+  position: 'topRight',
+  theme: 'light',
+  color: 'red',
+}
 
 window.Swal.SingleDialog = Swal.mixin({
   allowOutsideClick: false,

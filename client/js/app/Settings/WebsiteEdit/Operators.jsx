@@ -107,6 +107,7 @@ class Operators extends Component {
           message: `Invitation has been sent to ${data.email}.`,
           ...window.Toast.success
         });
+        this.props.update();
       } else {
         fh.set_multierrors(res.data);
       }
@@ -133,7 +134,11 @@ class Operators extends Component {
         }
         axios.post(api('website/remove/operator'), data)
         .then(res => {
-
+          Toast.show({
+            message: `${data.email} has been removed.`,
+            ...window.Toast.red
+          });
+          this.props.update();
         })
         .catch(err=> {fh.show_errorpage(err)});
       }

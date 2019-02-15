@@ -81,6 +81,7 @@ class UpdateChatboxBasicForm extends Component {
           message: 'Chatbox settings updated.',
           ...window.Toast.success
         });
+        this.props.update();
       } else {
         fh.set_multierrors(res.data);
       }

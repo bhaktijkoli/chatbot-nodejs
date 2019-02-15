@@ -77,6 +77,7 @@ class UpdateBasicForm extends Component {
           message: 'Website settings updated.',
           ...window.Toast.success
         });
+        this.props.update();
       } else {
         fh.set_multierrors(res.data);
       }
